@@ -1,18 +1,3 @@
-// promises: các đối tượng js để thực hiện các tác vụ bất đồng bộ
-//Brow API/Web API
-// - setTimeout(), setInterval(),..
-// - Click, scroll,... events
-
-//
-// const currentTime = new Promise((resolve, reject) => {
-//     let condition = true;
-
-//     setTimeout(() => {
-//         resolve ('Success');
-//      }, 3000);
-// });
-
-// promise
 function httpGetAsync(theUrl, resolve) {
   var xmlHttp = new XMLHttpRequest();
   xmlHttp.onreadystatechange = function () {
@@ -26,18 +11,6 @@ function httpGetAsync(theUrl, resolve) {
 //   });
 //   -------
 const currentPromise = new Promise((resolve, reject) => {
-  //   let condition = true;
-  //   let condition = false;
-
-  //   if (condition) {
-  //     //request API
-  //     setTimeout(() => {
-  //       resolve("Success 123");
-  //     }, 3000);
-  //   } else {
-  //     reject("Error");
-  //   }
-
   httpGetAsync("https://picsum.photos/200/300", resolve);
 });
 const promise2 = new Promise((resolve, reject) => {
@@ -46,6 +19,25 @@ const promise2 = new Promise((resolve, reject) => {
 const promise3 = new Promise((resolve, reject) => {
   httpGetAsync("https://picsum.photos/200/300", resolve);
 });
+
+//async - await
+const executeAsync = async () => {
+  try {
+    const response = await currentPromise;
+    //   console.log({response});
+    document.getElementById("img_1").setAttribute("src", response.responseURL);
+  
+    const response2 = await promise2;
+    //   console.log({response2});
+    document.getElementById("img_2").setAttribute("src", response2.responseURL);
+    const response3 = await promise3;
+    //   console.log({response3});
+    document.getElementById("img_3").setAttribute("src", response3.responseURL);
+  } catch (error) {
+      console.log(error);
+  }
+};
+executeAsync();
 
 //chaining: .then(data => {})
 currentPromise
