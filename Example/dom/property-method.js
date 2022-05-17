@@ -18,3 +18,10 @@ listLinks.forEach(item => item.setAttribute("target", "_blank"))
 // /3: selector.removeAttribute("attribute")-> xóa attribute của selector
 const p = document.getElementById("spinner");
 p.removeAttribute("style");
+
+// 4. hasAttribute("attribute") -> kiểm tra selector có attribute nào đó hay ko, nếu có -> true ngược lại ko có trả về false
+console.log(p.hasAttribute("class")); //false
+console.log(p.hasAttribute("id")); //true
+if(p.hasAttribute("id")) {
+    //do something here
+}
