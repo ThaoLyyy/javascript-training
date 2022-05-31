@@ -1,8 +1,8 @@
 // const {image, title, author, rating...addPost.} = course;
 const endpoint = "http://localhost:3456/courses";
-const courseList = document.querySelector(".course-list");
+const courseList = document.querySelector(".course__list");
 const formPost = document.querySelector(".form__post");
-const formSubmit = document.querySelector(".form-submit");
+const formSubmit = document.querySelector(".form__post--submit");
 const filterInput = document.querySelector(".main-header__filter");
 let updateId = null;
 // 
@@ -39,8 +39,8 @@ async function addNewCourse({
   author,
   rating,
   price,
-  bestSeller,
   buyAmount,
+  bestSeller,
 }) {
   await fetch(endpoint, {
     method: "POST",
@@ -50,8 +50,8 @@ async function addNewCourse({
       author,
       rating,
       price,
-      bestSeller,
       buyAmount,
+      bestSeller,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
@@ -68,6 +68,7 @@ getCourses();
  * author
  * rating
  * price
- * bestSeller
  * buyAmount
+ * bestSeller
  */
+

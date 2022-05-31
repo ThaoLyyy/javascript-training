@@ -45,7 +45,7 @@ git clone https://github.com/ThaoLyyy/javascript-training
 git checkout develop
 ```
 
-- Change directory to `big-pratice` folder
+- Change directory to `big-practice` folder
 
 ```
 cd big_practice
