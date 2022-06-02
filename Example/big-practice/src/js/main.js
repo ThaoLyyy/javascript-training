@@ -1,4 +1,4 @@
-import TaskModel from "./models/course.js";
+import CourseModel from "./models/course.js";
 
 
 getCourses();
