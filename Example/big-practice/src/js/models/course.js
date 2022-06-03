@@ -70,4 +70,42 @@ async function updateCourse({
     },
   });
 }
+
+async function deleteCourse(id) {
+  await fetch(`${endpoint}/${id}`, {
+    method: "DELETE",
+  });
+}
+async function getSingleCourse(id) {
+  const response = await fetch(`${endpoint}/${id}`);
+  const data = await response.json();
+  return data;
+}
+function renderItem(item) {
+  const template = `<div class="course__item">
+  <div class="course__image">
+    <img src="${item.image}" alt="" />
+    <button class="course-edit" data-id="${
+      item.id
+    }"><i class="fa fa-pencil" style="pointer-events: none;"></i></button>
+    <button class="course-remove" data-id="${
+      item.id
+    }"><i class="fa fa-times"></i></button>
+  </div>
+  <div class="course__content">
+    <h3 class="course__title">
+      ${item.title}
+    </h3>
+    <div class="course__author">${item.author}</div>
+    <div class="course__meta">
+      <div class="course__rating">${item.rating}</div>
+    </div>
+    ${
+      item.bestSeller ? '<div class="course__best-seller">Best seller</div>' : ""
+    }
+  </div>
+  <div class="course__enroll">${item.buyAmount}</div>
+  `;
+  courseList.insertAdjacentHTML("beforeend", template);
+}
 getCourses();
