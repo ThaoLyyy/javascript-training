@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Course</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link
       rel="stylesheet"
@@ -15,7 +15,7 @@
   </head>
   <body>
     <header class="main-header">
-      <h1 class="main-header__title">COURSE LIST</h1>
+      <h1 class="main-header__title">course list</h1>
       <input
         type="text"
         class="main-header__filter"
@@ -24,44 +24,76 @@
       />
     </header>
     <div class="container">
-      <form class="form__post" autocomplete="off">
-        <input type="text" name="image" placeholder="Image url" required />
-        <input
-          type="text"
-          name="title"
-          placeholder="Enter your title"
-          required
-        />
-        <input
-          type="text"
-          name="author"
-          placeholder="Enter your author"
-          required
-        />
-        <input
-          type="text"
-          name="rating"
-          placeholder="Rating"
-          min="1"
-          max="5"
-          required
-        />
-        <input type="text" name="price" placeholder="Price" min="1" required />
+      <button
+        onclick="document.getElementById('id01').style.display='block'"
+        class="course__button"
+      >
+        Add courses
+      </button>
 
-        <input
-          type="text"
-          name="buyAmount"
-          placeholder="Buy amount"
-          value="0"
-        />
-        <div>
-          <label for="best-seller">Best Seller?</label>
-          <input type="checkbox" name="bestSeller" id="best-seller" />
+      <div id="id01" class="course__modal">
+        <div class="course__modal--content">
+          <div class="course__container">
+            <h2 class="course__title--table">New Course</h2>
+            <span
+              onclick="document.getElementById('id01').style.display='none'"
+              class="course__button course__close"
+              >&times;</span
+            >
+            <form class="form__post" autocomplete="off">
+              <input
+                type="text"
+                name="image"
+                placeholder="Image url"
+                required
+              />
+              <input
+                type="text"
+                name="title"
+                placeholder="Enter your title"
+                required
+              />
+              <input
+                type="text"
+                name="author"
+                placeholder="Enter your author"
+                required
+              />
+              <input
+                type="text"
+                name="rating"
+                placeholder="Rating"
+                min="1"
+                max="5"
+                required
+              />
+              <input
+                type="text"
+                name="price"
+                placeholder="Price"
+                min="1"
+                required
+              />
+
+              <input
+                type="text"
+                name="buyAmount"
+                placeholder="Buy amount"
+                value="0"
+              />
+              <div>
+                <input type="checkbox" name="bestSeller" id="best-seller" />
+                <label for="best-seller">Best Seller?</label>
+              </div>
+              <button type="submit" class="form__post--submit">
+                Create course
+              </button>
+            </form>
+          </div>
         </div>
-        <button type="submit" class="form__post--submit">Add course</button>
-      </form>
+      </div>
       <div class="course__list">
-        <div class="course__item">
+        <!-- <div class="course__item">
           <div class="course__image">
             <img
               src="https://source.unsplash.com/random"
@@ -76,8 +108,9 @@
             <div class="course__author">ThaoLyy</div>
             <div class="course__meta">
               <div class="course__rating">4.5</div>
-              <div class="course__enroll">1230</div>
+              <div class="course__enroll">(1230)</div>
             </div>
+            <div class="course__price">2.209.999</div>
             <div class="course__best-seller">Best seller</div>
           </div>
         </div>
@@ -97,8 +130,9 @@
             <div class="course__author">ThaoLyy</div>
             <div class="course__meta">
               <div class="course__rating">4.5</div>
-              <div class="course__enroll">1230</div>
+              <div class="course__enroll">(1230)</div>
             </div>
+            <div class="course__price">2.209.999</div>
             <div class="course__best-seller">Best seller</div>
           </div>
         </div>
@@ -118,8 +152,9 @@
             <div class="course__author">ThaoLyy</div>
             <div class="course__meta">
               <div class="course__rating">4.5</div>
-              <div class="course__enroll">1230</div>
+              <div class="course__enroll">(1230)</div>
             </div>
+            <div class="course__price">2.209.999</div>
             <div class="course__best-seller">Best seller</div>
           </div>
         </div>
@@ -139,8 +174,9 @@
             <div class="course__author">ThaoLyy</div>
             <div class="course__meta">
               <div class="course__rating">4.5</div>
-              <div class="course__enroll">1230</div>
+              <div class="course__enroll">(1230)</div>
             </div>
+            <div class="course__price">2.209.999</div>
             <div class="course__best-seller">Best seller</div>
           </div>
         </div>
@@ -160,12 +196,12 @@
             <div class="course__author">ThaoLyy</div>
             <div class="course__meta">
               <div class="course__rating">4.5</div>
-              <div class="course__enroll">1230</div>
+              <div class="course__enroll">(1230)</div>
             </div>
+            <div class="course__price">2.209.999</div>
             <div class="course__best-seller">Best seller</div>
           </div>
-        </div>
-
+        </div> -->
       </div>
     </div>
 
