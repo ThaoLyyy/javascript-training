@@ -1,12 +1,23 @@
 export default class CourseModel {
   constructor() {
-    this.courses = [];
+    // this.courses = [];
     this.courseList = document.getElementById("course__list");
     this.formPost = document.getElementById("form__post");
     this.formSubmit = document.getElementById("form__post--submit");
     this.filterInput = document.getElementById("main-header__filter");
-    let updateId = null;
+    // let updateId = null;
   }
+
+  _resetInput(){
+		this.inputTitle.value = ""
+		this.inputAuthor.value = ""
+		this.inputRating.value = ""
+		this.inputPrice.value = ""
+		this.inputImage.value = ""
+		this.inputBestSeller.checked = ""
+		this.inputBuyAmount.value = ""
+	}
+
 
   display(allCourses) {
     allCourses().then((course) => {
@@ -46,7 +57,7 @@ export default class CourseModel {
       await getCourses();
       updateId = null;
       formSubmit.textContent = "Add course";
-      handleAddNewCourse(...course);
+      handleAddNewCourse(id);
     });
   }
   bindAddTask(handleAddTask) {
@@ -67,7 +78,7 @@ export default class CourseModel {
         formPost.elements["bestSeller"].checked = data.bestSeller;
         formSubmit.textContent = "Update course";
         updateId = id;
-        handleAddTask(this.course);
+        handleAddTask(id);
       }
     });
   }
