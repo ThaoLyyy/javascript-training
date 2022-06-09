@@ -1,0 +1,84 @@
+{
+  "courses": [
+    {
+      "image": "https://images.unsplash.com/photo-1471899236350-e3016bf1e69e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1471&q=80",
+      "title": "Basic ReactJS Course",
+      "author": "LYY__YYY",
+      "rating": 5,
+      "price": 245.345,
+      "bestSeller": true,
+      "buyAmount": 123007,
+      "id": 2
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y291cnNlJTIwcmVhY3Rqc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+      "title": "Roadmap to become a Frontend Developer",
+      "author": "ly",
+      "rating": 4.5,
+      "price": 456.789,
+      "bestSeller": false,
+      "buyAmount": 450237,
+      "id": 3
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1594200416066-4c1655336363?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm93ZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      "title": "Javascritp",
+      "author": "thaolyyy123",
+      "rating": 30,
+      "price": 456.789,
+      "bestSeller": false,
+      "buyAmount": 208257,
+      "id": 5
+    },
+    {
+      "image": "https://media.istockphoto.com/photos/react-inscription-against-laptop-and-code-background-picture-id1389287506?b=1&k=20&m=1389287506&s=170667a&w=0&h=5VEAzyULg693uUnvGbWNa_PlZsJuQ1fY74IgFpIwss0=",
+      "title": "Reactjs",
+      "author": "LYYY",
+      "rating": 3.7,
+      "price": 456.789,
+      "bestSeller": true,
+      "buyAmount": 3434,
+      "id": 6
+    },
+    {
+      "image": "https://media.istockphoto.com/photos/top-view-of-laptop-with-text-html5-picture-id1355140477?b=1&k=20&m=1355140477&s=170667a&w=0&h=oa8VlogaisZ_Ubz6eUYYqvZscGG1IZrm4l8P4yt-8AY=",
+      "title": "HTML5",
+      "author": "THAO-LY",
+      "rating": 3.7,
+      "price": 888.999,
+      "bestSeller": true,
+      "buyAmount": 456,
+      "id": 8
+    },
+    {
+      "image": "https://media.istockphoto.com/photos/abstract-creative-coding-concept-on-modern-laptop-background-picture-id1214633524?b=1&k=20&m=1214633524&s=170667a&w=0&h=j4wx-Tqr6tzneuQhmSWL9E9hoQoN-R9bcwscGEdWcdI=",
+      "title": "CSS3",
+      "author": "LyLy",
+      "rating": 3.6,
+      "price": 234.567,
+      "bestSeller": false,
+      "buyAmount": 6767,
+      "id": 9
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1654124803057-a07f6323a147?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
+      "title": "html",
+      "author": "lyyyy",
+      "rating": 3.5,
+      "price": 123.678,
+      "bestSeller": true,
+      "buyAmount": 1000,
+      "id": 10
+    },
+    {
+      "image": "https://media.istockphoto.com/photos/yellow-crane-arranging-the-write-php-3d-rendering-illustration-picture-id1278260682?b=1&k=20&m=1278260682&s=170667a&w=0&h=N0dRrU1DOrSRur0DMNg_Y017f6wSMttMlcpyq8i5d-Q=",
+      "title": "PHP",
+      "author": "Ly",
+      "rating": 4,
+      "price": 456.789,
+      "bestSeller": false,
+      "buyAmount": 200,
+      "id": 11
+    }
+  ]
+}

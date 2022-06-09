@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <h1 class="main-header__title">course list</h1>
+      <input
+        type="text"
+        class="main-header__filter"
+        id="search-input"
+        name="filter"
+        placeholder="search..."
+      />
+    </header>
+    <div class="course" id="addNewCourse">
+      <div class="container">
+        <button
+          class="course__button"
+          id="addBtn"
+          onclick="toggle()"
+        ><i class="fa-solid fa-plus"></i>
+          Add courses
+        </button>
+
+        <!-- remove -->
+        <!-- <input type="button" onclick="parent.location='<?php echo " ,id=" . $people['id'] ?>'" value='Delete'> -->
+        <!-- <a href="" class="">Delete</a> -->
+        <!-- <button class="course__remove" data-id="2"><i class="fa fa-times"></i></button> -->
+        <!-- remove -->
+
+        
+
+        <div id="add-course" class="popup">
+          <div class="popup__content">
+            <div class="course__container">
+              <h2 class="course__title--table">New Course</h2>
+              <span
+                onclick="document.getElementById('id01').style.display='none'"
+                class="course__button course__close"
+                >&times;</span
+              >
+              <form class="form__post" id="form__post" autocomplete="off">
+                <input
+                  type="text"
+                  id="add-img"
+                  name="image"
+                  placeholder="Image url"
+                  required
+                />
+                <input
+                  type="text"
+                  id="add-title"
+                  name="title"
+                  placeholder="Enter your title"
+                  required
+                />
+                <input
+                  type="text"
+                  id="add-author"
+                  name="author"
+                  placeholder="Enter your author"
+                  required
+                />
+                <input
+                  type="text"
+                  id="add-rating"
+                  name="rating"
+                  placeholder="Rating"
+                  min="1"
+                  max="5"
+                  required
+                />
+                <input
+                  type="text"
+                  id="add-price"
+                  name="price"
+                  placeholder="Price"
+                  min="1"
+                  required
+                />
+
+                <input
+                  type="text"
+                  id="add-buyAmount"
+                  name="buyAmount"
+                  placeholder="Buy amount"
+                  value="0"
+                />
+                <div>
+                  <input type="checkbox" name="bestSeller" id="add-best-seller" />
+                  <label for="best-seller">Best Seller?</label>
+                </div>
+                <!-- <button
+                  type="submit"
+                  class="form__post--submit"
+                  id="form__post--submit"
+                >
+                  Create course
+                </button> -->
+                <!-- <div class="button"> -->
+                  <button type="submit" class="form__post--create" id="submit" onclick="toggle()">Create course</button>
+                  <!-- <button type="button" class="form__post--cancel" onclick="toggle()">Cancel</button> -->
+                <!-- </div> -->
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- list -->
+      <div class="course__list" id="courseList">
+        <!-- <div class="course__item">
+          <div class="course__image">
+            <img
+              src="https://source.unsplash.com/random"
+              alt="#"
+              class="course__item-img"
+            />
+          </div>
+          <div class="course__content">
+            <h3 class="course__title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h3>
+            <div class="course__author">ThaoLyy</div>
+            <div class="course__meta">
+              <div class="course__rating">4.5</div>
+              <div class="course__enroll">(1230)</div>
+            </div>
+            <div class="course__price">2.209.999</div>
+            <div class="course__best-seller">Best seller</div>
+          </div>
+        </div>
+
+        <div class="course__item">
+          <div class="course__image">
+            <img
+              src="https://source.unsplash.com/random"
+              alt="#"
+              class="course__item-img"
+            />
+          </div>
+          <div class="course__content">
+            <h3 class="course__title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h3>
+            <div class="course__author">ThaoLyy</div>
+            <div class="course__meta">
+              <div class="course__rating">4.5</div>
+              <div class="course__enroll">(1230)</div>
+            </div>
+            <div class="course__price">2.209.999</div>
+            <div class="course__best-seller">Best seller</div>
+          </div>
+        </div>
+
+        <div class="course__item">
+          <div class="course__image">
+            <img
+              src="https://source.unsplash.com/random"
+              alt="#"
+              class="course__item-img"
+            />
+          </div>
+          <div class="course__content">
+            <h3 class="course__title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h3>
+            <div class="course__author">ThaoLyy</div>
+            <div class="course__meta">
+              <div class="course__rating">4.5</div>
+              <div class="course__enroll">(1230)</div>
+            </div>
+            <div class="course__price">2.209.999</div>
+            <div class="course__best-seller">Best seller</div>
+          </div>
+        </div>
+
+        <div class="course__item">
+          <div class="course__image">
+            <img
+              src="https://source.unsplash.com/random"
+              alt="#"
+              class="course__item-img"
+            />
+          </div>
+          <div class="course__content">
+            <h3 class="course__title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h3>
+            <div class="course__author">ThaoLyy</div>
+            <div class="course__meta">
+              <div class="course__rating">4.5</div>
+              <div class="course__enroll">(1230)</div>
+            </div>
+            <div class="course__price">2.209.999</div>
+            <div class="course__best-seller">Best seller</div>
+          </div>
+        </div>
+
+        <div class="course__item">
+          <div class="course__image">
+            <img
+              src="https://source.unsplash.com/random"
+              alt="#"
+              class="course__item-img"
+            />
+          </div>
+          <div class="course__content">
+            <h3 class="course__title">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </h3>
+            <div class="course__author">ThaoLyy</div>
+            <div class="course__meta">
+              <div class="course__rating">4.5</div>
+              <div class="course__enroll">(1230)</div>
+            </div>
+            <div class="course__price">2.209.999</div>
+            <div class="course__best-seller">Best seller</div>
+          </div> 
+        </div> -->
+
+        
+      </div>
+    </div>
+
+    <script type="text/javascript">
+     
+      function toggle() {
+        var addBtn = document.getElementById("addNewCourse");
+        addBtn.classList.toggle('active');
+        var popup = document.getElementById('add-course')
+        popup.classList.toggle('active')
+      }
+    </script>
+  
+    <script type="module" src="./js/main.js"></script>
+    
+  </body>
+</html>
