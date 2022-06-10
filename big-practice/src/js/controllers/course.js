@@ -3,6 +3,8 @@ export default class Controller {
     this.model = model;
     this.view = view;
 
+    this.model.bindCourseListChanged(this.onCourseListChanged);
+    this.view.bindAddNewCourse(this.handleAddNewCourse);
     this.init();
   }
 
@@ -13,5 +15,20 @@ export default class Controller {
 
   onCourseListChanged = (courses) => {
     this.view.display(courses);
+  };
+  handleAddNewCourse = ( image,
+      title,
+      author,
+      rating,
+      price,
+      buyAmount,
+      bestSeller,) => {
+    this.model.addNewCourse( image,
+      title,
+      author,
+      rating,
+      price,
+      buyAmount,
+      bestSeller,);
   };
 }

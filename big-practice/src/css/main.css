@@ -59,7 +59,7 @@ body {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
-.popup__content{
+.popup__content {
   margin: auto;
   /* background-color: #fff; */
   background-color: #ffeddb;
@@ -107,6 +107,9 @@ body {
   font-size: 16px;
 }
 .course__list {
+  width: 1200px;
+  max-width: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
@@ -173,10 +176,11 @@ body {
   color: #fff;
   background-color: #ffe162;
   padding: 10px 15px;
-  margin-top: 30px;
   display: inline-block;
   border-radius: 20px;
   border: 1px solid #ffffff;
+  /* margin-top: 30px; */
+  margin-top: 50px;
 }
 .course__meta {
   display: flex;
@@ -185,10 +189,16 @@ body {
   gap: 0 10px;
   font-size: 20px;
 }
+.course__price {
+  /* position: absolute; */
+  color: #000000;
+  font-size: 22px;
+  /* margin-top: 60px; */
+}
 .course__enroll {
+  position: absolute;
+  margin-top: 27px;
   font-size: 16px;
   color: #999;
   font-weight: 300;
 }
-
-

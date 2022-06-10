@@ -18,15 +18,21 @@
         placeholder="search..."
       />
     </header>
-    <div class="course" id="addNewCourse">
+    <div class="course" id="addCourse">
       <div class="container">
         <button
+          onclick="document.getElementById('id01').style.display='block'"
+          class="course__button"
+        ><i class="fa-solid fa-plus"></i>
+          Add courses
+        </button>
+        <!-- <button
           class="course__button"
           id="addBtn"
           onclick="toggle()"
         ><i class="fa-solid fa-plus"></i>
           Add courses
-        </button>
+        </button> -->
 
         <!-- remove -->
         <!-- <input type="button" onclick="parent.location='<?php echo " ,id=" . $people['id'] ?>'" value='Delete'> -->
@@ -34,8 +40,7 @@
         <!-- <button class="course__remove" data-id="2"><i class="fa fa-times"></i></button> -->
         <!-- remove -->
 
-        
-
+        <!-- add newcourse -->
         <div id="add-course" class="popup">
           <div class="popup__content">
             <div class="course__container">
@@ -104,7 +109,8 @@
                   Create course
                 </button> -->
                 <!-- <div class="button"> -->
-                  <button type="submit" class="form__post--create" id="submit" onclick="toggle()">Create course</button>
+                  <!-- <button type="submit" class="form__post--create" id="submit" onclick="toggle()">Create course</button> -->
+                  <button type="submit" class="form__post--create" id="submit">Create course</button>
                   <!-- <button type="button" class="form__post--cancel" onclick="toggle()">Cancel</button> -->
                 <!-- </div> -->
               </form>
@@ -112,6 +118,8 @@
           </div>
         </div>
       </div>
+   <!-- end addnewcourse -->
+      
 <!-- list -->
       <div class="course__list" id="courseList">
         <!-- <div class="course__item">
@@ -224,19 +232,17 @@
           </div> 
         </div> -->
 
-        
       </div>
-    </div>
+    <!-- </div> -->
 
-    <script type="text/javascript">
-     
+    <!-- <script type="text/javascript">
       function toggle() {
-        var addBtn = document.getElementById("addNewCourse");
+        var addBtn = document.getElementById("addCourse");
         addBtn.classList.toggle('active');
         var popup = document.getElementById('add-course')
         popup.classList.toggle('active')
       }
-    </script>
+    </script> -->
   
     <script type="module" src="./js/main.js"></script>
     

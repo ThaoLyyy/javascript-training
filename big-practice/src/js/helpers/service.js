@@ -1,4 +1,4 @@
-import api from '../constant'
+import api from '../constant.js'
 
 /**
  * Function uses url, params and method to return the result requested by the user
@@ -13,7 +13,7 @@ async function request(url, params, method = 'GET') {
     const options = {
         method,
         headers: {
-            'Content-Type': 'application/json'
+            "Content-type": "application/json; charset=UTF-8",
         }
     };
 
@@ -27,9 +27,9 @@ async function request(url, params, method = 'GET') {
 
     const response = await fetch(api.API_HOST + url, options);
 
-    if (response.status !== 200) {
-        return generateErrorResponse('The server responded with an unexpected status.');
-    }
+    // if (response.status !== 200) {
+    //     return generateErrorResponse('The server responded with an unexpected status.');
+    // }
 
     const result = await response.json();
 
