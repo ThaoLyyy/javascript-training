@@ -13,30 +13,20 @@ export default class View {
     this.filterInput = document.getElementById("search-input");
   }
 
-  // _resetInput() {
-  //   this.courseImg.value = "";
-  //   this.courseTitle.value = "";
-  //   this.courseAuthor.value = "";
-  //   this.courseRating.value = "";
-  //   this.coursePrice.value = "";
-  //   this.courseBuyAmount.value = "";
-  //   this.courseBestSeller.checked = "";
-  // }
+  _resetInput() {
+    this.courseImg.value = "";
+    this.courseTitle.value = "";
+    this.courseAuthor.value = "";
+    this.courseRating.value = "";
+    this.coursePrice.value = "";
+    this.courseBuyAmount.value = "";
+    this.courseBestSeller.checked = "";
+  }
 
   display(courses) {
-    
-    // while (this.courseList.firstChild) {
-    //   this.courseList.removeChild(this.courseList.firstChild);
-    // }
 
     if (courses.length !== 0) {
-      // const wrapper = document.getElementsByClassName("courseList")
-			// 	wrapper[0].innerHTML = ""
       courses.forEach((course) => {
-        // const item = document.createElement("div");
-        // item.id = course.id;
-        // item.className = "course__list";
-
         const cardCourse = document.createElement("div");
         cardCourse.id = course.id;
         cardCourse.className = "card-course";
@@ -72,6 +62,10 @@ export default class View {
         bestSeller.className = "course__best-seller";
         bestSeller.textContent = course.bestSeller;
 
+        // const delBtn = document.createElement("button");
+        // delBtn.className = "course__remove";
+        // delBtn.textContent = course.delBtn;
+
         courseBody.append(
           img,
           title,
@@ -79,14 +73,18 @@ export default class View {
           rating,
           price,
           buyAmount,
-          bestSeller,
+          bestSeller
         );
+
+        // const btnDelete = document.createElement("button");
+        // const icon1 = document.createElement("i");
+        // icon1.className = "fa-solid fa-trash-can";
+        // btnDelete.className = "delete-btn";
+        // btnDelete.textContent = "Delete";
+        // btnDelete.append(icon1);
 
         cardCourse.append(img, courseBody);
         this.courseList.appendChild(cardCourse);
-
-        // item.append(img, courseBody);
-        // this.courseList.appendChild(item);
       });
     }
   }
@@ -100,53 +98,49 @@ export default class View {
   bindAddNewCourse(handleAddNewCourse) {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      handleAddNewCourse(this.courseImg.value, this.courseTitle.value, this.courseAuthor.value, this.courseRating.value, this.coursePrice.value, this.courseBuyAmount.value, this.courseBestSeller.checked);
+      handleAddNewCourse(
+        this.courseImg.value,
+        this.courseTitle.value,
+        this.courseAuthor.value,
+        this.courseRating.value,
+        this.coursePrice.value,
+        this.courseBuyAmount.value,
+        this.courseBestSeller.checked
+      );
     });
   }
-
-  // bindAddNewCourse(handleAddNewCourse) {
-  //   formPost.addEventListener("submit", async (e) => {
+  
+  // bindDeleteCourse(handleDeleteCourse) {
+  //   this.courseList.addEventListener("click", (e) => {
   //     e.preventDefault();
-  //     const course = {
-  //       image: this.elements["image"].value,
-  //       title: this.elements["title"].value,
-  //       author: this.elements["author"].value,
-  //       rating: +this.elements["rating"].value,
-  //       price: +this.elements["price"].value,
-  //       bestSeller: this.elements["bestSeller"].checked,
-  //       buyAmount: +this.elements["buyAmount"].value,
-  //     };
-  //     console.log(updateId);
-  //     updateId
-  //       ? await updateCourse({ id: updateId, ...course })
-  //       : await addNewCourse(course);
-  //     this.reset();
-  //     await getCourses();
-  //     updateId = null;
-  //     formSubmit.textContent = "Add course";
-  //     handleAddNewCourse(id);
-  //   });
-  // }
-  // bindAddNewCourse(handleAddNewCourse) {
-  //   courseList.addEventListener("click", async (e) => {
-  //     if (e.target.matches(".course__remove")) {
-  //       const id = +e.target.dataset.id;
-  //       await deleteCourse(id);
-  //       await getCourses();
-  //     } else if (e.target.matches(".course__edit")) {
-  //       const id = +e.target.dataset.id;
-  //       const data = await getSingleCourse(id);
-  //       formPost.elements["image"].value = data.image;
-  //       formPost.elements["title"].value = data.title;
-  //       formPost.elements["author"].value = data.author;
-  //       formPost.elements["rating"].value = data.rating;
-  //       formPost.elements["price"].value = data.price;
-  //       formPost.elements["buyAmount"].value = data.buyAmount;
-  //       formPost.elements["bestSeller"].checked = data.bestSeller;
-  //       formSubmit.textContent = "Update course";
-  //       updateId = id;
-  //       handleAddTask(id);
+  //     if (e.target.className === "course__remove") {
+  //       const id = e.target.parentElement.id;
+  //       handleDeleteCourse(id);
   //     }
   //   });
   // }
+  // --------------------
+  bindSearchCourse(handler){
+    this.search.addEventListener('click',() => {
+      if(this.filterInput.value === ""){
+        alert("Enter the course name you want to find")
+      }
+      if(this.filterInput.vale !== ""){
+        handler(this.filterInput.value)
+      }
+    })
+    
+    this.filterInput.addEventListener("keydown",async (e)=>{
+      const response = await fetch(`${path.PATH_COURSE}/title_like=${e.target.value}`)
+      const data = await response.json()
+      console.log(data)
+    })
+  }
+
+  
+  bindFilterCourse(handler){
+   
+  }
+
+
 }
