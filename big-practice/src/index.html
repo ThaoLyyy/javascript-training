@@ -18,41 +18,41 @@
         placeholder="search..."
       />
     </header>
-    <div class="course" id="addCourse">
+    <div class="course" id="add-new-course">
       <div class="container">
+        
         <button
-          onclick="document.getElementById('id01').style.display='block'"
-          class="course__button"
-        ><i class="fa-solid fa-plus"></i>
-          Add courses
-        </button>
-        <!-- <button
           class="course__button"
           id="addBtn"
-          onclick="toggle()"
-        ><i class="fa-solid fa-plus"></i>
+          onclick="show_hide()"
+        >
           Add courses
-        </button> -->
+        </button>
 
-        <!-- remove -->
-        <!-- <input type="button" onclick="parent.location='<?php echo " ,id=" . $people['id'] ?>'" value='Delete'> -->
-        <!-- <a href="" class="">Delete</a> -->
-        <!-- <button class="course__remove" data-id="2"><i class="fa fa-times"></i></button> -->
-        <!-- remove -->
+        <!-- <button
+          class="course__button"
+          id="delBtn"
+          onclick="show_hide()"
+        >
+          Delete courses
+        </button> -->
+        <!-- <a href="#" title="delete" class="delete" onclick="return confirm('Are you sure you want to delete this item')">Delete</a> -->
+        <button class="course__remove" data-id="2" onclick="return confirm('Are you sure you want to delete this item')"><i class="fa fa-times"></i></button>
+      </div>
 
         <!-- add newcourse -->
         <div id="add-course" class="popup">
           <div class="popup__content">
             <div class="course__container">
               <h2 class="course__title--table">New Course</h2>
-              <span
+              <!-- <span
                 onclick="document.getElementById('id01').style.display='none'"
                 class="course__button course__close"
                 >&times;</span
-              >
+              > -->
               <form class="form__post" id="form__post" autocomplete="off">
                 <input
-                  type="text"
+                  type="url"
                   id="add-img"
                   name="image"
                   placeholder="Image url"
@@ -73,7 +73,7 @@
                   required
                 />
                 <input
-                  type="text"
+                  type="number"
                   id="add-rating"
                   name="rating"
                   placeholder="Rating"
@@ -82,7 +82,7 @@
                   required
                 />
                 <input
-                  type="text"
+                  type="number"
                   id="add-price"
                   name="price"
                   placeholder="Price"
@@ -91,11 +91,13 @@
                 />
 
                 <input
-                  type="text"
+                  type="number"
                   id="add-buyAmount"
                   name="buyAmount"
                   placeholder="Buy amount"
                   value="0"
+                  min="0"
+                  required
                 />
                 <div>
                   <input type="checkbox" name="bestSeller" id="add-best-seller" />
@@ -107,12 +109,10 @@
                   id="form__post--submit"
                 >
                   Create course
-                </button> -->
-                <!-- <div class="button"> -->
-                  <!-- <button type="submit" class="form__post--create" id="submit" onclick="toggle()">Create course</button> -->
-                  <button type="submit" class="form__post--create" id="submit">Create course</button>
-                  <!-- <button type="button" class="form__post--cancel" onclick="toggle()">Cancel</button> -->
-                <!-- </div> -->
+                </button> -->  
+                  <button type="submit" class="form__post--create" id="submit" onclick="show_hide()">Create course</button>
+                  <button type="button" class="form__post--cancel" onclick="show_hide()">Cancel</button>
+              
               </form>
             </div>
           </div>
@@ -120,7 +120,6 @@
       </div>
    <!-- end addnewcourse -->
       
-<!-- list -->
       <div class="course__list" id="courseList">
         <!-- <div class="course__item">
           <div class="course__image">
@@ -231,18 +230,23 @@
             <div class="course__best-seller">Best seller</div>
           </div> 
         </div> -->
-
       </div>
-    <!-- </div> -->
 
-    <!-- <script type="text/javascript">
-      function toggle() {
-        var addBtn = document.getElementById("addCourse");
-        addBtn.classList.toggle('active');
-        var popup = document.getElementById('add-course')
-        popup.classList.toggle('active')
+    <script type="text/javascript">
+      var a;
+      function show_hide(){
+          if(a==1)
+          {
+              document.getElementById("add-course").style.display="inline";
+              return a=0;
+          }
+          else{
+              document.getElementById("add-course").style.display="none";
+              return a=1;
+          }
       }
-    </script> -->
+    </script>
+
   
     <script type="module" src="./js/main.js"></script>
     
