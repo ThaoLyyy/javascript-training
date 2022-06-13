@@ -3,9 +3,8 @@ import path from "../constant";
 
 export default class Model {
   courses = [];
-  constructor() {
+  constructor() {}
 
-  }
   bindCourseListChanged(callback) {
     this.onCourseListChanged = callback;
   }
@@ -22,7 +21,7 @@ export default class Model {
     rating,
     price,
     buyAmount,
-    bestSeller,
+    bestSeller
   ) {
     const item = await fetch.create(`/${path.PATH_COURSE}`, {
       image,
@@ -31,18 +30,11 @@ export default class Model {
       rating,
       price,
       buyAmount,
-      bestSeller:false,
+      bestSeller: false,
     });
-
     this.courses.push(item);
-
     return this.courses;
   }
-
-  // async showCourse() {
-  //   const courseList = await fetch.get(`/${path.PATH_COURSE}`);
-  //   return courseList;
-  // }
 
   // async updateCourse({
   //   id,
@@ -76,4 +68,16 @@ export default class Model {
   //     // method: "DELETE",
   //   });
   // }
+
+  searchCourse = async (title) => {
+    const course = await fetch.get(`/${path.PATH_COURSE}?q=${title}`);
+    this.courses = course;
+    return course;
+  };
+
+  filterCourse = async (title) => {
+    const course = await fetch.get(`/${path.PATH_COURSE}?title=${title}`);
+    this.courses = course;
+    return course;
+  };
 }
