@@ -3,26 +3,22 @@ export default class Controller {
     this.model = model;
     this.view = view;
 
-    this.model.bindCourseListChanged(this.onCourseListChanged);
     this.view.bindAddNewCourse(this.handleAddNewCourse);
-    // this.view.bindDeleteCourse(this.handleDeleteCourse);
-    // this.onCourseListChanged(this.model.showCourse);
     this.view.bindFilterCourse(this.handleFilterCourse);
 
+
     this.init();
-    // init();
   }
 
   init = async () => {
-    const courses = await this.model.showCourse();
-    this.view.display(courses);
-    return courses;
+   await this.model.getCourses();
+   this.onCourseListChanged(this.model.courses);
   };
 
   onCourseListChanged = (courses) => {
-    this.view.display(courses);
+    this.view.displayCourses(courses);
   };
-  handleAddNewCourse = (
+  handleAddNewCourse = async(
     image,
     title,
     author,
@@ -31,7 +27,7 @@ export default class Controller {
     buyAmount,
     bestSeller
   ) => {
-    this.model.addNewCourse(
+   const course = await this.model.addNewCourse(
       image,
       title,
       author,
@@ -40,19 +36,17 @@ export default class Controller {
       buyAmount,
       bestSeller
     );
+    this.onCourseListChanged(this.model.courses);
+
   };
 
-  // handleDeleteCourse = async (id) => {
-  //   const courses = await this.model.deleteCourse(id);
-  //   this.view.display(courses);
-  // };
   handleSearchCourse = async title => {
     const courses = await this.model.searchCourse(title)
-    this.view.display(courses)
+    this.view.displayCourses(courses)
   }
 
   handleFilterCourse = async title =>{
     const courses = await this.model.filterCourse(title)
-    this.view.display(courses)
+    this.view.displayCourses(courses)
   }
 }
