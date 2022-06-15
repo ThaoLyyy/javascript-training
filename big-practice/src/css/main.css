@@ -106,6 +106,12 @@ body {
   border-radius: 10px;
   font-size: 16px;
 }
+.form__post--cancel {
+  border-radius: 10px;
+  border: 0;
+  font-size: 16px;
+  background-color: #ede3e3de;
+}
 .course__list {
   width: 1200px;
   max-width: 100%;
@@ -158,7 +164,7 @@ body {
   margin-bottom: 10px;
   line-height: 1.25;
   font-size: 22px;
-  font-weight: 500;
+  font-weight: 600;
 }
 .course__author {
   font-size: 16px;
@@ -166,11 +172,9 @@ body {
   font-weight: 300;
   margin-bottom: 15px;
 }
-.course__price {
-  position: absolute;
-  color: #000000;
-  font-size: 22px;
-  /* margin-top: 60px; */
+.course__rating {
+  color: #ffa500;
+  font-weight: 600;
 }
 .course__best-seller {
   color: #fff;
@@ -179,8 +183,8 @@ body {
   display: inline-block;
   border-radius: 20px;
   border: 1px solid #ffffff;
+  margin-top: 40px;
   /* margin-top: 30px; */
-  margin-top: 50px;
 }
 .course__meta {
   display: flex;
@@ -190,15 +194,124 @@ body {
   font-size: 20px;
 }
 .course__price {
-  /* position: absolute; */
   color: #000000;
-  font-size: 22px;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 500;
+  /* position: absolute; */
   /* margin-top: 60px; */
 }
 .course__enroll {
-  position: absolute;
-  margin-top: 27px;
-  font-size: 16px;
+  display: flex;
   color: #999;
+  margin-top: -45px;
+  font-size: 15px;
   font-weight: 300;
+  align-items: center;
+  flex-direction: column-reverse;
+  margin-right: 130px;
+}
+
+.course__remove {
+  cursor: pointer;
+  color: #fff;
+  background-color: #ff6651;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  padding: 8px 10px;
+  display: inline-block;
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+.course__remove i {
+  pointer-events: none;
+  font-size: 18px;
+}
+.modal__container--title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 600;
+}
+.modal__container--confirm {
+  margin: 15px 0px;
+  font-size: 18px;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn,
+.deletebtn {
+  float: left;
+  width: 50%;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+  background-color: #ede3e3de;
+  color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+  background-color: #ff6651 !important;
+}
+
+/* Add padding and center-align text to the container */
+.modal__container {
+  padding: 16px;
+  text-align: center;
+}
+
+/* The Modal Delete (background) */
+.modal__delete {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 3; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%;
+  overflow: auto; 
+  background-color: #0006;
+  padding-top: 180px;
+}
+
+.modal__content {
+  background-color: #ffeddb;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* edit */
+.course__edit {
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
