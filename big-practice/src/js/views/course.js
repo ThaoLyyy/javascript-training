@@ -101,14 +101,14 @@ export default class View {
   bindAddNewCourse(handleAddNewCourse) {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      // if (this.courseName.value == "") {
-      //   alert("please enter your title");
-      //   return false;
-      // }
-      // if (this.courseName.value == "") {
-      //   alert("please enter your author");
-      //   return false;
-      // }
+      if (this.courseTitle.value == "") {
+        alert("please enter your title");
+        return false;
+      }
+      if (this.courseAuthor.value == "") {
+        alert("please enter your author");
+        return false;
+      }
       handleAddNewCourse(
         this.courseImg.value,
         this.courseTitle.value,
