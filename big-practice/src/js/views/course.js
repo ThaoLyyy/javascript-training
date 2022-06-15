@@ -23,7 +23,14 @@ export default class View {
     this.courseBestSeller.checked = "";
   }
 
-  display(courses) {
+  closeModalDelete() {
+    const deleteForm = document.getElementById("delete-form");
+    const overlay = document.getElementById("overlay");
+    overlay.style.opacity = "0";
+    deleteForm.style.visibility = "hidden";
+  }
+
+  displayCourses = (courses) => {
 
     if (courses.length !== 0) {
       courses.forEach((course) => {
@@ -37,6 +44,13 @@ export default class View {
         const img = document.createElement("div");
         img.className = "course__image";
         img.style.backgroundImage = `url(${course.image})`;
+
+        // const btnDelete = document.createElement("button");
+        // const icon1 = document.createElement("i");
+        // icon1.className = "fa fa-times";
+        // btnDelete.className = "delete-btn";
+        // btnDelete.textContent = "Delete";
+        // btnDelete.append(icon1);
 
         const title = document.createElement("h3");
         title.className = "course__title";
@@ -62,10 +76,6 @@ export default class View {
         bestSeller.className = "course__best-seller";
         bestSeller.textContent = course.bestSeller;
 
-        // const delBtn = document.createElement("button");
-        // delBtn.className = "course__remove";
-        // delBtn.textContent = course.delBtn;
-
         courseBody.append(
           img,
           title,
@@ -76,18 +86,11 @@ export default class View {
           bestSeller
         );
 
-        // const btnDelete = document.createElement("button");
-        // const icon1 = document.createElement("i");
-        // icon1.className = "fa-solid fa-trash-can";
-        // btnDelete.className = "delete-btn";
-        // btnDelete.textContent = "Delete";
-        // btnDelete.append(icon1);
-
         cardCourse.append(img, courseBody);
         this.courseList.appendChild(cardCourse);
       });
     }
-  }
+  };
 
   // async function getSingleCourse(id) {
   //   const response = await fetch(`${path.PATH_COURSE}/${id}`);
@@ -98,6 +101,14 @@ export default class View {
   bindAddNewCourse(handleAddNewCourse) {
     this.addBtn.addEventListener("click", (e) => {
       e.preventDefault();
+      // if (this.courseName.value == "") {
+      //   alert("please enter your title");
+      //   return false;
+      // }
+      // if (this.courseName.value == "") {
+      //   alert("please enter your author");
+      //   return false;
+      // }
       handleAddNewCourse(
         this.courseImg.value,
         this.courseTitle.value,
@@ -107,40 +118,30 @@ export default class View {
         this.courseBuyAmount.value,
         this.courseBestSeller.checked
       );
+      
     });
   }
-  
-  // bindDeleteCourse(handleDeleteCourse) {
-  //   this.courseList.addEventListener("click", (e) => {
-  //     e.preventDefault();
-  //     if (e.target.className === "course__remove") {
-  //       const id = e.target.parentElement.id;
-  //       handleDeleteCourse(id);
-  //     }
-  //   });
-  // }
-  // --------------------
-  bindSearchCourse(handler){
-    this.search.addEventListener('click',() => {
-      if(this.filterInput.value === ""){
-        alert("Enter the course name you want to find")
+
+  bindSearchCourse(handler) {
+    this.search.addEventListener("click", () => {
+      if (this.filterInput.value === "") {
+        alert("Enter the course name you want to find");
       }
-      if(this.filterInput.vale !== ""){
-        handler(this.filterInput.value)
+      if (this.filterInput.vale !== "") {
+        handler(this.filterInput.value);
       }
-    })
+    });
     
-    this.filterInput.addEventListener("keydown",async (e)=>{
-      const response = await fetch(`${path.PATH_COURSE}/title_like=${e.target.value}`)
-      const data = await response.json()
-      console.log(data)
-    })
+    this.filterInput.addEventListener("keydown", async (e) => {
+      const response = await fetch(
+        `${path.PATH_COURSE}/title_like=${e.target.value}`
+      );
+      const data = await response.json();
+      console.log(data);
+    });
   }
 
-  
-  bindFilterCourse(handler){
-   
+  bindFilterCourse(handler) {
+    
   }
-
-
 }
