@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 body {
-  /* background-color: #dda89e; */
+
   background-color: #e9cbc8;
   font-family: Roboto, sans-serif;
 }
@@ -61,7 +61,6 @@ body {
 }
 .popup__content {
   margin: auto;
-  /* background-color: #fff; */
   background-color: #ffeddb;
   position: relative;
   padding: 0;
@@ -116,10 +115,10 @@ body {
   width: 1200px;
   max-width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   grid-gap: 25px;
+  grid-template-columns: repeat(4, 1fr);
   padding: 25px;
+  display: grid;
 }
 .course__image {
   height: 300px;
@@ -136,7 +135,7 @@ body {
   top: 10px;
   left: 10px;
 }
-.course-remove {
+.course__remove {
   cursor: pointer;
   color: #fff;
   background-color: #ff6651;
@@ -149,15 +148,19 @@ body {
   top: 9px;
   right: 10px;
 }
-.course-remove i {
+.course__remove i {
   pointer-events: none;
   font-size: 18px;
 }
-.course__image img {
-  border-radius: 8px;
+.course__image-btn {
+  height: 300px;
+  position: relative;
+}
+.course__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 8px;
 }
 .course__title {
   margin-top: 20px;
@@ -175,16 +178,29 @@ body {
 .course__rating {
   color: #ffa500;
   font-weight: 600;
+  font-size: 20px;
+}
+.course__price {
+  color: #000;
+  margin-top: 60px;
+  font-size: 22px;
+  position: absolute;
+  font-weight: 500;
+
+}
+.course__enroll {
+  color: #999;
+    font-size: 16px;
+    font-weight: 300;
 }
 .course__best-seller {
   color: #fff;
-  background-color: #ffe162;
-  padding: 10px 15px;
-  display: inline-block;
-  border-radius: 20px;
-  border: 1px solid #ffffff;
-  margin-top: 40px;
-  /* margin-top: 30px; */
+    background-color: #ffe162;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    margin-top: 25px;
+    padding: 10px 15px;
+    display: inline-block;
 }
 .course__meta {
   display: flex;
@@ -193,24 +209,9 @@ body {
   gap: 0 10px;
   font-size: 20px;
 }
-.course__price {
-  color: #000000;
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: 500;
-  /* position: absolute; */
-  /* margin-top: 60px; */
-}
-.course__enroll {
-  display: flex;
-  color: #999;
-  margin-top: -45px;
-  font-size: 15px;
-  font-weight: 300;
-  align-items: center;
-  flex-direction: column-reverse;
-  margin-right: 130px;
-}
+
+/* delete */
+/* Set a style for all buttons */
 
 .course__remove {
   cursor: pointer;
@@ -242,8 +243,8 @@ body {
 }
 
 /* Float cancel and delete buttons and add an equal width */
-.cancelbtn,
-.deletebtn {
+.cancel__btn,
+.delete__btn {
   float: left;
   width: 50%;
   border: none;
@@ -253,13 +254,13 @@ body {
 }
 
 /* Add a color to the cancel button */
-.cancelbtn {
+.cancel__btn {
   background-color: #ede3e3de;
   color: black;
 }
 
 /* Add a color to the delete button */
-.deletebtn {
+.delete__btn {
   background-color: #ff6651 !important;
 }
 
@@ -269,7 +270,7 @@ body {
   text-align: center;
 }
 
-/* The Modal Delete (background) */
+/* The Modal (background) */
 .modal__delete {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -278,17 +279,33 @@ body {
   top: 0;
   width: 100%; /* Full width */
   height: 100%;
-  overflow: auto; 
+  overflow: auto; /* Enable scroll if needed */
   background-color: #0006;
   padding-top: 180px;
 }
-
+/* Modal Content/Box */
 .modal__content {
   background-color: #ffeddb;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
 }
+
+/* Style the horizontal ruler */
+/* hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+} */
+
+/* The Modal Close Button (x) */
+/* .close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+} */
 
 .close:hover,
 .close:focus {
@@ -297,7 +314,7 @@ body {
 }
 
 /* Clear floats */
-.clearfix::after {
+.clear__fix::after {
   content: "";
   clear: both;
   display: table;
@@ -314,4 +331,15 @@ body {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 239, 239, 0.573);
+  pointer-events: none;
 }
