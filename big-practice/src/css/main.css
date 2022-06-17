@@ -48,7 +48,7 @@ body {
 }
 .popup {
   z-index: 3;
-  display: none;
+/*   display: none; */
   padding-top: 180px;
   position: fixed;
   left: 0;
@@ -209,10 +209,6 @@ body {
   gap: 0 10px;
   font-size: 20px;
 }
-
-/* delete */
-/* Set a style for all buttons */
-
 .course__remove {
   cursor: pointer;
   color: #fff;
@@ -290,22 +286,15 @@ body {
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
 }
-
-/* Style the horizontal ruler */
-/* hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-} */
-
 /* The Modal Close Button (x) */
-/* .close {
+.close {
   position: absolute;
   right: 35px;
   top: 15px;
   font-size: 40px;
   font-weight: bold;
   color: #f1f1f1;
-} */
+}
 
 .close:hover,
 .close:focus {
