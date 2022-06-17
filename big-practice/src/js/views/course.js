@@ -38,9 +38,8 @@ export default class View {
   // Close add course modal
   closeModalDelete() {
     const deleteForm = document.getElementById("modal__delete");
-    deleteForm.style.visibility = "hidden";
+    deleteForm.style.visibility = "visible";
   }
-	
   //Render
   displayCourses = (courses) => {
     if (courses.length !== 0) {
@@ -66,9 +65,11 @@ export default class View {
         btnEdit.append(editIcon);
 
         btnEdit.addEventListener("click", () => {
+          // const overlay = document.getElementById("overlay");
           const updateForm = document.getElementById("update-form");
           this.editModal(course);
           updateForm.style.visibility = "visible";
+          // overlay.style.opacity = "1";
         });
 
         const btnDelete = document.createElement("button");
@@ -139,12 +140,11 @@ export default class View {
     });
 
     this.addBtn.addEventListener("click", e => {
-      // e.preventDefault();
+      e.preventDefault();
       // validation
       if (this.courseImg.value == "") {
         alert("please enter your url image");
         return false;
-
       }
       // if (this.courseTitle.value == "") {
       //   alert("please enter your title");
@@ -204,55 +204,120 @@ export default class View {
     wrapper.id = "wrapper";
 
     let popup = document.createElement("div");
-    popup.className = "popup";
+    popup.className = "course__popup";
     update.style.visibility = "hidden";
-    popup.id = "popup";
+    popup.id = "course__popup";
 
-    let editImg = document.createElement("h2");
-    editImg.className = "course__title--table";
+    let popupContent = document.createElement("div");
+    popupContent.className = "popup__content";
+    popupContent.textContent = "Update course";
+
+    let courseContainer = document.createElement("div");
+    courseContainer.className = "course__container";
+    courseContainer.textContent = "Update course";
+
+    let titleTable = document.createElement("h2");
+    titleTable.className = "course__title--table";
+    titleTable.textContent = "Update course";
+
+    let formPost = document.createElement("form");
+    formPost.className = "form__post";
+    formPost.textContent = "Update course";
+
+    let editImg = document.createElement("input");
+    editImg.className = "add-img";
     editImg.textContent = "Update course";
 
-    let editTitle = document.createElement("h2");
-    editTitle.className = "form-title";
-    editTitle.textContent = "Update course";
-
-   
     let inputUpdateImg = document.createElement("input");
     inputUpdateImg.className = "update-image";
     inputUpdateImg.id = "update-image";
     inputUpdateImg.value = course.image;
 
+    let inputUpdateTitle = document.createElement("input");
+    inputUpdateTitle.className = "update-title";
+    inputUpdateTitle.id = "update-title";
+    inputUpdateTitle.value = course.title;
+
+    let inputUpdateAu = document.createElement("input");
+    inputUpdateAu.className = "update-author";
+    inputUpdateAu.id = "update-author";
+    inputUpdateAu.value = course.author;
+
+    let inputUpdateRat = document.createElement("input");
+    inputUpdateRat.className = "update-rating";
+    inputUpdateRat.id = "update-rating";
+    inputUpdateRat.value = course.rating;
+
+    let inputUpdatePri = document.createElement("input");
+    inputUpdatePri.className = "update-price";
+    inputUpdatePri.id = "update-price";
+    inputUpdatePri.value = course.price;
+
+    let inputUpdateBuyA = document.createElement("input");
+    inputUpdateBuyA.className = "update-buyAmount";
+    inputUpdateBuyA.id = "update-buyAmount";
+    inputUpdateBuyA.value = course.buyAmount;
+
+    let inputUpdateBestS = document.createElement("input");
+    inputUpdateBestS.className = "update-bestSeller";
+    inputUpdateBestS.id = "update-bestSeller";
+    inputUpdateBestS.value = course.buyAmount;
+    let labelUpdateBestS = document.createElement('label')
+		labelUpdateBestS.textContent = 'bestSeller'
+
     let btnUpdate = document.createElement("button");
-    btnUpdate.textContent = "Update";
+    btnUpdate.textContent = "Update course";
     btnUpdate.className = "btn-update";
     btnUpdate.id = "btn-update";
 
     //submit edit
     btnUpdate.addEventListener("click", () => {
       const updateForm = document.getElementById("update-form");
-      const updateBtn = document.getElementById("update-form-btn");
+      const updateBtn = document.getElementById("Cancel");
       updateForm.style.visibility = "hidden";
     });
 
     const btnCancel = document.createElement("button");
-    btnClose.textContent = "Close";
-    btnClose.className = "btn-close";
+    btnCancel.textContent = "Cancel";
+    btnCancel.className = "form__post--cancel";
 
     //close edit modal
-    btnClose.addEventListener("click", () => {
-      const updateForm = document.getElementById("update-form");
-      const wrarap = document.getElementById("wrapper");
+    btnCancel.addEventListener("click", () => {
+      const updateForm = document.getElementById("update__form");
+      const wrapper = document.getElementById("wrapper");
       updateForm.style.visibility = "hidden";
-      wrarap.remove();
+      wrapper.remove();
     });
 
- 
+    formPost.append( inputUpdateImg,inputUpdateTitle);
+    updateFieldTT.append(labelUpdateTT, inputUpdateTitle);
+    updateFieldDes.append(labelUpdateDes, inputUpdateDes);
+    updateFieldCate.append(labelUpdateCate, inputUpdateCate);
+    updateFieldAu.append(labelUpdateAu, inputUpdateAu);
+    updateFieldImg.append(labelUpdateImg, inputUpdateImg);
+
+    const btn = document.createElement("div");
+    btn.className = "update-form-btn";
+    btn.id = "update-form-btn";
+
+    btn.append(btnUpdate, btnClose);
+    popup.append(
+      editTitle,
+      updateFieldTT,
+      updateFieldDes,
+      updateFieldCate,
+      updateFieldAu,
+      updateFieldImg
+    );
+    wrapper.append(popup, btn);
+    update.appendChild(wrapper);
+  }
 
   /**
    * function use id to update course
    * Add event 'click' for courseList element
    * Add event 'click' for edit button
-   * @param {function} handler
+   * @param {function} handleUpdateCourse
    */
   bindUpdateCourse(handleUpdateCourse) {
     this.courseList.addEventListener("click", (e) => {
@@ -260,14 +325,13 @@ export default class View {
         //get id and all the value
         const id = e.target.parentElement.id;
         const updateImage = document.getElementById("update-image");
-	const updateTitle = document.getElementById("update-title");
+        const updateTitle = document.getElementById("update-title");
         const updateAuthor =  document.getElementById("update-author");
         const updateRating =  document.getElementById("update-rating");
         const updatePrice = document.getElementById("update-Price");
         const updateBuyAmount = document.getElementById("update-BuyAmount");
         const updateBestSeller = document.getElementById("update-BestSeller");
         const edit = document.getElementById("btn-update");
-	     
         //submit edit
         edit.addEventListener("click", () => {
           handler(
@@ -302,10 +366,7 @@ export default class View {
         if (e.target.className === 'course__remove') {
             const id = e.target.parentElement.id
             const deleteForm = document.getElementById('delete-form')
-            deleteForm.style.visibility = "visible"
-            // const overlay = document.getElementById("overlay")
-            // overlay.style.opacity = "1"
-            // const icon = document.getElementById("close-icon")
+
             icon.addEventListener('click',()=>{
               this.closeModalDelete()
               check++
@@ -322,32 +383,26 @@ export default class View {
     })
   }
 
-  // --------------------
-//   bindSearchCourse(handler) {
-//     this.search.addEventListener("click", () => {
-//       if (this.filterInput.value === "") {
-//         alert("Enter the course name you want to find");
-//       }
-//       if (this.filterInput.vale !== "") {
-//         handler(this.filterInput.value);
-//       }
-//     });
-//     this.filterInput.addEventListener("keydown", async (e) => {
-//       const response = await fetch(
-//         `${path.PATH_COURSE}/title_like=${e.target.value}`
-//       );
-//       const data = await response.json();
-//       console.log(data);
-//     });
-//   }
+  bindSearchCourse(handler) {
+    this.search.addEventListener("click", () => {
+      if (this.filterInput.value === "") {
+        alert("Enter the course name you want to find");
+      }
+      if (this.filterInput.vale !== "") {
+        handler(this.filterInput.value);
+      }
+    });
+
+    this.filterInput.addEventListener("keydown", async (e) => {
+      const response = await fetch(
+        `${path.PATH_COURSE}/title_like=${e.target.value}`
+      );
+      const data = await response.json();
+      console.log(data);
+    });
+  }
 
   bindFilterCourse(handler) {
-    // for(let check of this.checkCate){
-    //   check.addEventListener('click', ()=>{
-    //     if(check.checked){
-    //       handler(check.value)
-    //     }
-    //   })
-    // }
+    
   }
 }
