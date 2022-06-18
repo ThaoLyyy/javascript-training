@@ -290,24 +290,17 @@ export default class View {
     });
 
     formPost.append( inputUpdateImg,inputUpdateTitle);
-    updateFieldTT.append(labelUpdateTT, inputUpdateTitle);
-    updateFieldDes.append(labelUpdateDes, inputUpdateDes);
-    updateFieldCate.append(labelUpdateCate, inputUpdateCate);
-    updateFieldAu.append(labelUpdateAu, inputUpdateAu);
-    updateFieldImg.append(labelUpdateImg, inputUpdateImg);
+   
 
     const btn = document.createElement("div");
     btn.className = "update-form-btn";
     btn.id = "update-form-btn";
 
-    btn.append(btnUpdate, btnClose);
+    btn.append(btnUpdate, btnCancel);
     popup.append(
       editTitle,
-      updateFieldTT,
-      updateFieldDes,
-      updateFieldCate,
-      updateFieldAu,
-      updateFieldImg
+      inputUpdateImg,
+      
     );
     wrapper.append(popup, btn);
     update.appendChild(wrapper);
@@ -338,9 +331,10 @@ export default class View {
             id,
             updateTitle.value,
             updateAuthor.value,
-            updateDes.value,
-            updateCate.value,
-            updateImg.value
+            updateRating.value,
+            updatePrice.value,
+            updateBuyAmount.value,
+	    updateBestSeller  
           );
           const wrapper = document.getElementById("wrapper");
           //remove edit modal
