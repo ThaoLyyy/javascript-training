@@ -133,6 +133,11 @@ export default class Model {
     this.courses.splice(index, 1)
     return this.courses
   };
+  
+   getCourseById = (id) => {
+        const index = this.courses.find((course) => course.id === id);
+        const course = this.courses[index];
+    };
 
   /**
    * Search all course that match
