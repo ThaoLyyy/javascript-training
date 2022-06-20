@@ -146,26 +146,26 @@ export default class View {
         alert("please enter your url image");
         return false;
       }
-      // if (this.courseTitle.value == "") {
-      //   alert("please enter your title");
-      //   return false;
-      // }
-      // if (this.courseAuthor.value == "") {
-      //   alert("please enter your author");
-      //   return false;
-      // }
-      // if (this.courseRating.value == "") {
-      //   alert("please enter your rating");
-      //   return false;
-      // }
-      // if (this.coursePrice.value == "") {
-      //   alert("please enter your price");
-      //   return false;
-      // }
-      // if (this.courseBuyAmount.value == "") {
-      //   alert("please enter your buyAmount");
-      //   return false;
-      // }
+      if (this.courseTitle.value == "") {
+        alert("please enter your title");
+        return false;
+      }
+      if (this.courseAuthor.value == "") {
+        alert("please enter your author");
+        return false;
+      }
+      if (this.courseRating.value == "") {
+        alert("please enter your rating");
+        return false;
+      }
+      if (this.coursePrice.value == "") {
+        alert("please enter your price");
+        return false;
+      }
+      if (this.courseBuyAmount.value == "") {
+        alert("please enter your buyAmount");
+        return false;
+      }
 
       // validation form
       if (
@@ -353,29 +353,38 @@ export default class View {
      * Add event 'click' for delete button
      * @param {function} handlerDeleteCourse
      */
-	bindDeleteCourse(handleDeleteCourse) {
-    this.courseList.addEventListener('click', e => {
-      //Use check variable to avoid duplicate event
-      let check = 0
-        if (e.target.className === 'course__remove') {
-            const id = e.target.parentElement.id
-            const deleteForm = document.getElementById('delete-form')
+	  bindDeleteCourse(handlerDeleteCourse) {
+        this.courseList.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (e.target.className === "course__remove") {
+                const id = e.target.parentElement.parentElement.id;
+                handlerDeleteCourse(id);
+            }
+        });
+    }
+// 	bindDeleteCourse(handleDeleteCourse) {
+//     this.courseList.addEventListener('click', e => {
+//       //Use check variable to avoid duplicate event
+//       let check = 0
+//         if (e.target.className === 'course__remove') {
+//             const id = e.target.parentElement.parentElement.id
+//             const deleteForm = document.getElementById('delete-form')
 
-            icon.addEventListener('click',()=>{
-              this.closeModalDelete()
-              check++
-            })
-            const sureDelete = document.getElementById("delete__btn")
-            sureDelete.addEventListener('click',()=>{
-              if(check === 0) {
-                handler(id)
-                this.closeModalDelete()
-                check++
-              }
-            })
-        }
-    })
-  }
+//             icon.addEventListener('click',()=>{
+//               this.closeModalDelete()
+//               check++
+//             })
+//             const sureDelete = document.getElementById("delete__btn")
+//             sureDelete.addEventListener('click',()=>{
+//               if(check === 0) {
+//                 handler(id)
+//                 this.closeModalDelete()
+//                 check++
+//               }
+//             })
+//         }
+//     })
+//   }
 
   bindSearchCourse(handler) {
     this.search.addEventListener("click", () => {
