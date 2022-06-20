@@ -55,13 +55,12 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  /* overflow: auto; */
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 .popup__content {
   margin: auto;
-  background-color: #ffeddb;
+  background-color: #f7d8d0;
   position: relative;
   padding: 0;
   outline: 0;
@@ -322,13 +321,3 @@ body {
   left: 10px;
 }
 
-.overlay {
-  position: fixed;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(255, 239, 239, 0.573);
-  pointer-events: none;
-}
