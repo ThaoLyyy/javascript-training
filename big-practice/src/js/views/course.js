@@ -194,81 +194,123 @@ export default class View {
       }
     });
   }
+	
+// render popup
+  renderForm = (item = {}) => {
+    return `<div id="course__popup" class="popup">
+    <div class="popup__content">
+        <div class="course__container">
+            <h2 class="course__title--table">${
+              item ? "Edit Course" : "Create Course"
+            }</h2>
+            <form class="form__post" id="form__post" autocomplete="off">
+                <input type="url" id="add-img" name="image" placeholder="Image url" required value = "${
+                  item ? item.image : ""
+                }"/>
+                <input type="text" id="add-title" name="title" placeholder="Enter your title" required value = "${
+                  item ? item.title : ""
+                }"/>
+                <input type="text" id="add-author" name="author" placeholder="Enter your author" required value = "${
+                  item ? item.author : ""
+                }"/>
+                <input type="number" id="add-rating" name="rating" placeholder="Rating" min="1" max="5" required value = "${
+                  item ? item.rating : ""
+                }"/>
+                <input type="number" id="add-price" name="price" placeholder="Price" min="1" required value = "${
+                  item ? item.price : ""
+                }/>
+                <input type="number" id="add-buyAmount" name="buyAmount" placeholder="Buy amount" value="0" min="0" required value = "${
+                  item ? item.buyAmount : ""
+                }/>
+                <div>
+                    <input type="checkbox" name="bestSeller" id="best-seller" value = "${
+                      item ? item.buyAmount : ""
+                    }/>
+                    <label for="best-seller">Best Seller?</label>
+                </div>
+                <button type="submit" class="form__post--create" id="submit">Create course</button>
+                <button type="button" class="form__post--cancel" id="form__post--cancel">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>`;
+};
+	
   // ==============================
   // Edit course modal
-  editModal(course) {
-    let update = document.getElementById("update__form");
-    update.className = "update__form";
-    let wrapper = document.createElement("div");
-    wrapper.className = "wrapper";
-    wrapper.id = "wrapper";
+//   editModal(course) {
+//     let update = document.getElementById("update__form");
+//     update.className = "update__form";
+//     let wrapper = document.createElement("div");
+//     wrapper.className = "wrapper";
+//     wrapper.id = "wrapper";
 
-    let popup = document.createElement("div");
-    popup.className = "course__popup";
-    update.style.visibility = "hidden";
-    popup.id = "course__popup";
+//     let popup = document.createElement("div");
+//     popup.className = "course__popup";
+//     update.style.visibility = "hidden";
+//     popup.id = "course__popup";
 
-    let popupContent = document.createElement("div");
-    popupContent.className = "popup__content";
-    popupContent.textContent = "Update course";
+//     let popupContent = document.createElement("div");
+//     popupContent.className = "popup__content";
+//     popupContent.textContent = "Update course";
 
-    let courseContainer = document.createElement("div");
-    courseContainer.className = "course__container";
-    courseContainer.textContent = "Update course";
+//     let courseContainer = document.createElement("div");
+//     courseContainer.className = "course__container";
+//     courseContainer.textContent = "Update course";
 
-    let titleTable = document.createElement("h2");
-    titleTable.className = "course__title--table";
-    titleTable.textContent = "Update course";
+//     let titleTable = document.createElement("h2");
+//     titleTable.className = "course__title--table";
+//     titleTable.textContent = "Update course";
 
-    let formPost = document.createElement("form");
-    formPost.className = "form__post";
-    formPost.textContent = "Update course";
+//     let formPost = document.createElement("form");
+//     formPost.className = "form__post";
+//     formPost.textContent = "Update course";
 
-    let editImg = document.createElement("input");
-    editImg.className = "add-img";
-    editImg.textContent = "Update course";
+//     let editImg = document.createElement("input");
+//     editImg.className = "add-img";
+//     editImg.textContent = "Update course";
 
-    let inputUpdateImg = document.createElement("input");
-    inputUpdateImg.className = "update-image";
-    inputUpdateImg.id = "update-image";
-    inputUpdateImg.value = course.image;
+//     let inputUpdateImg = document.createElement("input");
+//     inputUpdateImg.className = "update-image";
+//     inputUpdateImg.id = "update-image";
+//     inputUpdateImg.value = course.image;
 
-    let inputUpdateTitle = document.createElement("input");
-    inputUpdateTitle.className = "update-title";
-    inputUpdateTitle.id = "update-title";
-    inputUpdateTitle.value = course.title;
+//     let inputUpdateTitle = document.createElement("input");
+//     inputUpdateTitle.className = "update-title";
+//     inputUpdateTitle.id = "update-title";
+//     inputUpdateTitle.value = course.title;
 
-    let inputUpdateAu = document.createElement("input");
-    inputUpdateAu.className = "update-author";
-    inputUpdateAu.id = "update-author";
-    inputUpdateAu.value = course.author;
+//     let inputUpdateAu = document.createElement("input");
+//     inputUpdateAu.className = "update-author";
+//     inputUpdateAu.id = "update-author";
+//     inputUpdateAu.value = course.author;
 
-    let inputUpdateRat = document.createElement("input");
-    inputUpdateRat.className = "update-rating";
-    inputUpdateRat.id = "update-rating";
-    inputUpdateRat.value = course.rating;
+//     let inputUpdateRat = document.createElement("input");
+//     inputUpdateRat.className = "update-rating";
+//     inputUpdateRat.id = "update-rating";
+//     inputUpdateRat.value = course.rating;
 
-    let inputUpdatePri = document.createElement("input");
-    inputUpdatePri.className = "update-price";
-    inputUpdatePri.id = "update-price";
-    inputUpdatePri.value = course.price;
+//     let inputUpdatePri = document.createElement("input");
+//     inputUpdatePri.className = "update-price";
+//     inputUpdatePri.id = "update-price";
+//     inputUpdatePri.value = course.price;
 
-    let inputUpdateBuyA = document.createElement("input");
-    inputUpdateBuyA.className = "update-buyAmount";
-    inputUpdateBuyA.id = "update-buyAmount";
-    inputUpdateBuyA.value = course.buyAmount;
+//     let inputUpdateBuyA = document.createElement("input");
+//     inputUpdateBuyA.className = "update-buyAmount";
+//     inputUpdateBuyA.id = "update-buyAmount";
+//     inputUpdateBuyA.value = course.buyAmount;
 
-    let inputUpdateBestS = document.createElement("input");
-    inputUpdateBestS.className = "update-bestSeller";
-    inputUpdateBestS.id = "update-bestSeller";
-    inputUpdateBestS.value = course.buyAmount;
-    let labelUpdateBestS = document.createElement('label')
-		labelUpdateBestS.textContent = 'bestSeller'
+//     let inputUpdateBestS = document.createElement("input");
+//     inputUpdateBestS.className = "update-bestSeller";
+//     inputUpdateBestS.id = "update-bestSeller";
+//     inputUpdateBestS.value = course.buyAmount;
+//     let labelUpdateBestS = document.createElement('label')
+// 		labelUpdateBestS.textContent = 'bestSeller'
 
-    let btnUpdate = document.createElement("button");
-    btnUpdate.textContent = "Update course";
-    btnUpdate.className = "btn-update";
-    btnUpdate.id = "btn-update";
+//     let btnUpdate = document.createElement("button");
+//     btnUpdate.textContent = "Update course";
+//     btnUpdate.className = "btn-update";
+//     btnUpdate.id = "btn-update";
 
     //submit edit
     btnUpdate.addEventListener("click", () => {
@@ -334,7 +376,8 @@ export default class View {
             updateRating.value,
             updatePrice.value,
             updateBuyAmount.value,
-	    updateBestSeller  
+            updateBuyAmount.value,
+	    updateBestSeller.value 
           );
           const wrapper = document.getElementById("wrapper");
           //remove edit modal
