@@ -238,115 +238,115 @@ export default class View {
 	
   // ==============================
   // Edit course modal
-//   editModal(course) {
-//     let update = document.getElementById("update__form");
-//     update.className = "update__form";
-//     let wrapper = document.createElement("div");
-//     wrapper.className = "wrapper";
-//     wrapper.id = "wrapper";
+  // editModal(course) {
+  //   let update = document.getElementById("update__form");
+  //   update.className = "update__form";
+  //   let wrapper = document.createElement("div");
+  //   wrapper.className = "wrapper";
+  //   wrapper.id = "wrapper";
 
-//     let popup = document.createElement("div");
-//     popup.className = "course__popup";
-//     update.style.visibility = "hidden";
-//     popup.id = "course__popup";
+  //   let popup = document.createElement("div");
+  //   popup.className = "course__popup";
+  //   update.style.visibility = "hidden";
+  //   popup.id = "course__popup";
 
-//     let popupContent = document.createElement("div");
-//     popupContent.className = "popup__content";
-//     popupContent.textContent = "Update course";
+  //   let popupContent = document.createElement("div");
+  //   popupContent.className = "popup__content";
+  //   popupContent.textContent = "Update course";
 
-//     let courseContainer = document.createElement("div");
-//     courseContainer.className = "course__container";
-//     courseContainer.textContent = "Update course";
+  //   let courseContainer = document.createElement("div");
+  //   courseContainer.className = "course__container";
+  //   courseContainer.textContent = "Update course";
 
-//     let titleTable = document.createElement("h2");
-//     titleTable.className = "course__title--table";
-//     titleTable.textContent = "Update course";
+  //   let titleTable = document.createElement("h2");
+  //   titleTable.className = "course__title--table";
+  //   titleTable.textContent = "Update course";
 
-//     let formPost = document.createElement("form");
-//     formPost.className = "form__post";
-//     formPost.textContent = "Update course";
+  //   let formPost = document.createElement("form");
+  //   formPost.className = "form__post";
+  //   formPost.textContent = "Update course";
 
-//     let editImg = document.createElement("input");
-//     editImg.className = "add-img";
-//     editImg.textContent = "Update course";
+  //   let editImg = document.createElement("input");
+  //   editImg.className = "add-img";
+  //   editImg.textContent = "Update course";
 
-//     let inputUpdateImg = document.createElement("input");
-//     inputUpdateImg.className = "update-image";
-//     inputUpdateImg.id = "update-image";
-//     inputUpdateImg.value = course.image;
+  //   let inputUpdateImg = document.createElement("input");
+  //   inputUpdateImg.className = "update-image";
+  //   inputUpdateImg.id = "update-image";
+  //   inputUpdateImg.value = course.image;
 
-//     let inputUpdateTitle = document.createElement("input");
-//     inputUpdateTitle.className = "update-title";
-//     inputUpdateTitle.id = "update-title";
-//     inputUpdateTitle.value = course.title;
+  //   let inputUpdateTitle = document.createElement("input");
+  //   inputUpdateTitle.className = "update-title";
+  //   inputUpdateTitle.id = "update-title";
+  //   inputUpdateTitle.value = course.title;
 
-//     let inputUpdateAu = document.createElement("input");
-//     inputUpdateAu.className = "update-author";
-//     inputUpdateAu.id = "update-author";
-//     inputUpdateAu.value = course.author;
+  //   let inputUpdateAu = document.createElement("input");
+  //   inputUpdateAu.className = "update-author";
+  //   inputUpdateAu.id = "update-author";
+  //   inputUpdateAu.value = course.author;
 
-//     let inputUpdateRat = document.createElement("input");
-//     inputUpdateRat.className = "update-rating";
-//     inputUpdateRat.id = "update-rating";
-//     inputUpdateRat.value = course.rating;
+  //   let inputUpdateRat = document.createElement("input");
+  //   inputUpdateRat.className = "update-rating";
+  //   inputUpdateRat.id = "update-rating";
+  //   inputUpdateRat.value = course.rating;
 
-//     let inputUpdatePri = document.createElement("input");
-//     inputUpdatePri.className = "update-price";
-//     inputUpdatePri.id = "update-price";
-//     inputUpdatePri.value = course.price;
+  //   let inputUpdatePri = document.createElement("input");
+  //   inputUpdatePri.className = "update-price";
+  //   inputUpdatePri.id = "update-price";
+  //   inputUpdatePri.value = course.price;
 
-//     let inputUpdateBuyA = document.createElement("input");
-//     inputUpdateBuyA.className = "update-buyAmount";
-//     inputUpdateBuyA.id = "update-buyAmount";
-//     inputUpdateBuyA.value = course.buyAmount;
+  //   let inputUpdateBuyA = document.createElement("input");
+  //   inputUpdateBuyA.className = "update-buyAmount";
+  //   inputUpdateBuyA.id = "update-buyAmount";
+  //   inputUpdateBuyA.value = course.buyAmount;
 
-//     let inputUpdateBestS = document.createElement("input");
-//     inputUpdateBestS.className = "update-bestSeller";
-//     inputUpdateBestS.id = "update-bestSeller";
-//     inputUpdateBestS.value = course.buyAmount;
-//     let labelUpdateBestS = document.createElement('label')
-// 		labelUpdateBestS.textContent = 'bestSeller'
+  //   let inputUpdateBestS = document.createElement("input");
+  //   inputUpdateBestS.className = "update-bestSeller";
+  //   inputUpdateBestS.id = "update-bestSeller";
+  //   inputUpdateBestS.value = course.buyAmount;
+  //   let labelUpdateBestS = document.createElement('label')
+	// 	labelUpdateBestS.textContent = 'bestSeller'
 
-//     let btnUpdate = document.createElement("button");
-//     btnUpdate.textContent = "Update course";
-//     btnUpdate.className = "btn-update";
-//     btnUpdate.id = "btn-update";
+  //   let btnUpdate = document.createElement("button");
+  //   btnUpdate.textContent = "Update course";
+  //   btnUpdate.className = "btn-update";
+  //   btnUpdate.id = "btn-update";
 
-    //submit edit
-    btnUpdate.addEventListener("click", () => {
-      const updateForm = document.getElementById("update-form");
-      const updateBtn = document.getElementById("Cancel");
-      updateForm.style.visibility = "hidden";
-    });
+  //   //submit edit
+  //   btnUpdate.addEventListener("click", () => {
+  //     const updateForm = document.getElementById("update-form");
+  //     const updateBtn = document.getElementById("Cancel");
+  //     updateForm.style.visibility = "hidden";
+  //   });
 
-    const btnCancel = document.createElement("button");
-    btnCancel.textContent = "Cancel";
-    btnCancel.className = "form__post--cancel";
+  //   const btnCancel = document.createElement("button");
+  //   btnCancel.textContent = "Cancel";
+  //   btnCancel.className = "form__post--cancel";
 
-    //close edit modal
-    btnCancel.addEventListener("click", () => {
-      const updateForm = document.getElementById("update__form");
-      const wrapper = document.getElementById("wrapper");
-      updateForm.style.visibility = "hidden";
-      wrapper.remove();
-    });
+  //   //close edit modal
+  //   btnCancel.addEventListener("click", () => {
+  //     const updateForm = document.getElementById("update__form");
+  //     const wrapper = document.getElementById("wrapper");
+  //     updateForm.style.visibility = "hidden";
+  //     wrapper.remove();
+  //   });
 
-    formPost.append( inputUpdateImg,inputUpdateTitle);
+  //   formPost.append( inputUpdateImg,inputUpdateTitle);
    
 
-    const btn = document.createElement("div");
-    btn.className = "update-form-btn";
-    btn.id = "update-form-btn";
+  //   const btn = document.createElement("div");
+  //   btn.className = "update-form-btn";
+  //   btn.id = "update-form-btn";
 
-    btn.append(btnUpdate, btnCancel);
-    popup.append(
-      editTitle,
-      inputUpdateImg,
+  //   btn.append(btnUpdate, btnCancel);
+  //   popup.append(
+  //     editTitle,
+  //     inputUpdateImg,
       
-    );
-    wrapper.append(popup, btn);
-    update.appendChild(wrapper);
-  }
+  //   );
+  //   wrapper.append(popup, btn);
+  //   update.appendChild(wrapper);
+  // }
 
   /**
    * function use id to update course
