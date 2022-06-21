@@ -18,6 +18,11 @@ export default class Controller {
   onCourseListChanged = (courses) => {
     this.view.displayCourses(courses);
   };
+  
+  getCourseById = (id) => {
+    const course = this.model.getCourse(id)
+    this.view.renderForm(course)
+  }
 
   handleAddNewCourse = async (
     image,
