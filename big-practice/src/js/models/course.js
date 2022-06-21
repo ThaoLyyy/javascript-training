@@ -67,64 +67,71 @@ export default class Model {
     this.courses.push(course);
     return this.course;
   };
+  
+  getCourseById = (id) => {
+      const index = this.courses.find((item) => item.id === id);
+      const course = this.courses[index];
+  };
 
   /**
    * Use API url from fetch import and param id from controller in update
    * @param {string} id
    * @param {string} updateImg
    */
-  updateCourse = async (
-    id,
-    updateImg,
-    updateTitle,
-    updateAuthor,
-    updateRating,
-    updatePrice,
-    updateBuyAmount,
-    updateBestSeller
-  ) => {
-    const index = this.courses.findIndex((course) => course.id === id);
-    const courseUpdate = {
-      id,
-      image: updateImg,
-      title: updateTitle,
-      author: updateAuthor,
-      rating: updateRating,
-      price: updatePrice,
-      buyAmount: updateBuyAmount,
-      bestSeller: updateBestSeller,
-    };
+//   updateCourse = async (
+//     id,
+//     updateImg,
+//     updateTitle,
+//     updateAuthor,
+//     updateRating,
+//     updatePrice,
+//     updateBuyAmount,
+//     updateBestSeller
+//   ) => {
+//     const index = this.courses.findIndex((course) => course.id === id);
+//     const courseUpdate = {
+//       id,
+//       image: updateImg,
+//       title: updateTitle,
+//       author: updateAuthor,
+//       rating: updateRating,
+//       price: updatePrice,
+//       buyAmount: updateBuyAmount,
+//       bestSeller: updateBestSeller,
+//     };
 
-    await fetch.update(`/${path.PATH_COURSE}/${id}`, courseUpdate);
-    this.courses.splice(index, 1, courseUpdate);
+//     await fetch.update(`/${path.PATH_COURSE}/${id}`, courseUpdate);
+//     this.courses.splice(index, 1, courseUpdate);
+//     return this.courses;
+//   };
+//     };
+//   };
+
+updateCourse = async (
+    id,
+    image,
+    title,
+    author,
+    rating,
+    price,
+    buyAmount,
+    bestSeller
+  ) => {
+    const index = this.tasks.findIndex((item) => item.id === id);
+    const course = await fetch.update(`/${path.PATH_COURSE}/${id}`, {
+      id,
+      image,
+      title,
+      author,
+      rating,
+      price,
+      buyAmount,
+      bestSeller: false,
+    });
+
+    this.courses.splice(index, 1, course);
     return this.courses;
   };
-  // async updateCourse({
-  //   id,
-  //   image,
-  //   title,
-  //   author,
-  //   rating,
-  //   price,
-  //   bestSeller,
-  //   buyAmount,
-  // }) {
-  //   await fetch(`${path.PATH_COURSE}/${id}`, {
-  //     method: "PUT",
-  //     body: JSON.stringify({
-  //       image,
-  //       title,
-  //       author,
-  //       rating,
-  //       price,
-  //       buyAmount,
-  //       bestSeller,
-  //     }),
-  //     headers: {
-  //       "Content-type": "application/json; charset=UTF-8",
-  //     },
-  //   });
-  // }
 
   deleteCourse = async (id) => {
     const index = this.courses.findIndex(course => course.id === id)
