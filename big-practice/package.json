@@ -17,5 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "json-server": "^0.17.0"
+    "uuid": "^8.3.2"
   }
 }
