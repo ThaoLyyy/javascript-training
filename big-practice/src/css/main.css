@@ -10,7 +10,6 @@
   box-sizing: border-box;
 }
 body {
-
   background-color: #e9cbc8;
   font-family: Roboto, sans-serif;
 }
@@ -41,14 +40,18 @@ body {
   display: inline-block;
   text-align: center;
   color: #fff;
-  background-color: #ff6651 !important;
+  background-color: #ff6651;
   border-radius: 10px;
   padding: 10px 15px;
   margin-left: 25px;
 }
+.course__button:hover {
+  background: rgb(88, 166, 240);
+  color: #000;
+  font-weight: bold;
+}
 .popup {
   z-index: 3;
-/*   display: none; */
   padding-top: 180px;
   position: fixed;
   left: 0;
@@ -57,6 +60,7 @@ body {
   height: 100%;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
+  visibility: hidden;
 }
 .popup__content {
   margin: auto;
@@ -108,7 +112,7 @@ body {
   border-radius: 10px;
   border: 0;
   font-size: 16px;
-  background-color: #ede3e3de;
+  background-color: #cfc5c5de;
 }
 .course__list {
   width: 1200px;
@@ -185,21 +189,20 @@ body {
   font-size: 22px;
   position: absolute;
   font-weight: 500;
-
 }
 .course__enroll {
   color: #999;
-    font-size: 16px;
-    font-weight: 300;
+  font-size: 16px;
+  font-weight: 300;
 }
 .course__best-seller {
   color: #fff;
-    background-color: #ffe162;
-    border: 1px solid #fff;
-    border-radius: 20px;
-    margin-top: 25px;
-    padding: 10px 15px;
-    display: inline-block;
+  background-color: #ffe162;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  margin-top: 25px;
+  padding: 10px 15px;
+  display: inline-block;
 }
 .course__meta {
   display: flex;
@@ -236,7 +239,6 @@ body {
   margin: 15px 0px;
   font-size: 18px;
 }
-
 /* Float cancel and delete buttons and add an equal width */
 .cancel__btn,
 .delete__btn {
@@ -247,24 +249,32 @@ body {
   border-radius: 5px;
   font-size: 16px;
 }
-
 /* Add a color to the cancel button */
 .cancel__btn {
   background-color: #ede3e3de;
   color: black;
 }
-
 /* Add a color to the delete button */
 .delete__btn {
   background-color: #ff6651 !important;
 }
-
 /* Add padding and center-align text to the container */
 .modal__container {
   padding: 16px;
   text-align: center;
 }
-
+/* edit */
+.course__edit {
+  cursor: pointer;
+  background-color: gray;
+  border: none;
+  outline: none;
+  padding: 6px 8px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 /* The Modal (background) */
 .modal__delete {
   display: none; /* Hidden by default */
@@ -280,7 +290,7 @@ body {
 }
 /* Modal Content/Box */
 .modal__content {
-  background-color: #ffeddb;
+  background-color: #f7d8d0;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
@@ -294,30 +304,25 @@ body {
   font-weight: bold;
   color: #f1f1f1;
 }
-
 .close:hover,
 .close:focus {
   color: #f44336;
   cursor: pointer;
 }
-
-/* Clear floats */
-.clear__fix::after {
+.modal__footer::after {
   content: "";
   clear: both;
   display: table;
 }
 
-/* edit */
-.course__edit {
-  cursor: pointer;
-  background-color: gray;
-  border: none;
-  outline: none;
-  padding: 6px 8px;
-  display: inline-block;
-  position: absolute;
-  top: 10px;
-  left: 10px;
+.modal__delete {
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background-color: #0006;
+  padding-top: 180px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  visibility: hidden;
 }
-
