@@ -4,4 +4,3 @@ import View from "./views/course.js";
 
 const controller = new Controller(new Model(), new View());
 
-controller.init();
