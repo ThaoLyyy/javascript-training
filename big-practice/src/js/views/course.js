@@ -1,21 +1,23 @@
 export default class View {
   constructor() {
-    this.courseImg = document.getElementById("add-img");
-    this.courseTitle = document.getElementById("add-title");
-    this.courseAuthor = document.getElementById("add-author");
-    this.courseRating = document.getElementById("add-rating");
-    this.coursePrice = document.getElementById("add-price");
-    this.courseBuyAmount = document.getElementById("add-buyAmount");
-    this.courseBestSeller = document.getElementById("add-best-seller");
+    this.courseImg = document.getElementById("course__img");
+    this.courseTitle = document.getElementById("course__title");
+    this.courseAuthor = document.getElementById("course__author");
+    this.courseRating = document.getElementById("course__rating");
+    this.coursePrice = document.getElementById("course__price");
+    this.courseBuyAmount = document.getElementById("course__buyAmount");
+    this.courseBestSeller = document.getElementById("course__bestseller");
     this.courseList = document.getElementById("course__list");
-    this.updateForm = document.getElementById("update-form");
-    this.addBtn = document.getElementById("submit");
+    this.submitBtn = document.getElementById("btn__submit");
+    this.cancelBtn = document.getElementById("btn__cancel");
     this.formPost = document.getElementById("form__post");
-    this.filterInput = document.getElementById("search-input");
+    this.filterInput = document.getElementById("search__input");
+    this.courseModal = document.getElementById("course__popup");
+    this.addCourseBtn = document.getElementById("add__course");
   }
 
   // Reset the input after add course
-  _resetInput() {
+  resetInput = () => {
     this.courseImg.value = "";
     this.courseTitle.value = "";
     this.courseAuthor.value = "";
@@ -23,23 +25,33 @@ export default class View {
     this.coursePrice.value = "";
     this.courseBuyAmount.value = "";
     this.courseBestSeller.checked = "";
-  }
-  //open add course modal
-  openAddModal() {
-    const addModal = document.getElementById("course__popup");
-    addModal.style.visibility = "visible";
-  }
-  // Close add course modal
-  closeModalAdd() {
-    const addModal = document.getElementById("course__popup");
-    addModal.style.visibility = "hidden";
-  }
-  
-  // Close add course modal
+  };
+
+  openCourseModal = (course) => {
+    if (course) {
+      // change value for form
+      this.courseImg.value = course.image;
+      this.courseTitle.value = course.title;
+      this.courseAuthor.value = course.author;
+      this.courseRating.value = course.rating;
+      this.coursePrice.value = course.price;
+      this.courseBuyAmount.value = course.buyAmount;
+      this.courseBestSeller.checked = course.bestSeller;
+    }
+    this.courseModal.style.visibility = "visible";
+  };
+
+  closeCourseModal = () => {
+    this.courseModal.style.visibility = "hidden";
+    this.resetInput();
+  };
+
+  // Close delete course modal
   closeModalDelete() {
     const deleteForm = document.getElementById("modal__delete");
     deleteForm.style.visibility = "visible";
   }
+
   //Render
   displayCourses = (courses) => {
     if (courses.length !== 0) {
@@ -64,19 +76,10 @@ export default class View {
         editIcon.className = "fa fa-pencil";
         btnEdit.append(editIcon);
 
-        btnEdit.addEventListener("click", () => {
-          // const overlay = document.getElementById("overlay");
-          const updateForm = document.getElementById("update-form");
-          this.editModal(course);
-          updateForm.style.visibility = "visible";
-          // overlay.style.opacity = "1";
-        });
-
         const btnDelete = document.createElement("button");
         const icondel = document.createElement("i");
         icondel.className = "fa fa-times";
         btnDelete.className = "course__remove";
-        // btnDelete.textContent = "Delete";
         btnDelete.append(icondel);
 
         courseImg.append(img, btnEdit, btnDelete);
@@ -122,24 +125,25 @@ export default class View {
       });
     }
   };
+
+  bindShowCourseModal = () => {
+    this.addCourseBtn.addEventListener("click", () => {
+      this.openCourseModal();
+    });
+  };
+
+  bindCloseCourseModal = () => {
+    this.cancelBtn.addEventListener("click", () => {
+      this.closeCourseModal();
+    });
+  };
+
   /**
    * Add event 'click' for element button
    * @param {function} handleAddNewCourse
    */
   bindAddNewCourse(handleAddNewCourse) {
-    const AddNewCourse = document.getElementById("course__button");
-    //open add new course modal
-    AddNewCourse.addEventListener("click", () => {
-      const addModal = document.getElementById("course__popup");
-      addModal.style.visibility = "visible";
-    });
-    //close add  new course modal
-    const closeModal = document.getElementById("form__post--cancel");
-    closeModal.addEventListener("click", () => {
-      this.closeModalAdd();
-    });
-
-    this.addBtn.addEventListener("click", e => {
+    this.submitBtn.addEventListener("click", (e) => {
       e.preventDefault();
       // validation
       if (this.courseImg.value == "") {
@@ -177,278 +181,55 @@ export default class View {
         this.courseBuyAmount.value &&
         this.courseBestSeller.checked
       ) {
-        handleAddNewCourse(
-          this.courseImg.value,
-          this.courseTitle.value,
-          this.courseAuthor.value,
-          this.courseRating.value,
-          this.coursePrice.value,
-          this.courseBuyAmount.value,
-          this.courseBestSeller.checked
-        );
-
-        this.closeModalAdd();
+        handleAddNewCourse({
+          image: this.courseImg.value,
+          title: this.courseTitle.value,
+          author: this.courseAuthor.value,
+          rating: +this.courseRating.value,
+          price: +this.coursePrice.value,
+          buyAmount: this.courseBuyAmount.value,
+          bestSeller: +this.courseBestSeller.checked,
+        });
+        // this.modelContent.innerHTML = "";
+        this.closeCourseModal();
         this._resetInput();
       } else {
         alert("Please enter all before create a new course!!");
       }
     });
   }
-	
-// render popup
-  renderForm = (item = {}) => {
-    return `<div id="course__popup" class="popup">
-    <div class="popup__content">
-        <div class="course__container">
-            <h2 class="course__title--table">${
-              item ? "Edit Course" : "Create Course"
-            }</h2>
-            <form class="form__post" id="form__post" autocomplete="off">
-                <input type="url" id="add-img" name="image" placeholder="Image url" required value = "${
-                  item ? item.image : ""
-                }"/>
-                <input type="text" id="add-title" name="title" placeholder="Enter your title" required value = "${
-                  item ? item.title : ""
-                }"/>
-                <input type="text" id="add-author" name="author" placeholder="Enter your author" required value = "${
-                  item ? item.author : ""
-                }"/>
-                <input type="number" id="add-rating" name="rating" placeholder="Rating" min="1" max="5" required value = "${
-                  item ? item.rating : ""
-                }"/>
-                <input type="number" id="add-price" name="price" placeholder="Price" min="1" required value = "${
-                  item ? item.price : ""
-                }/>
-                <input type="number" id="add-buyAmount" name="buyAmount" placeholder="Buy amount" value="0" min="0" required value = "${
-                  item ? item.buyAmount : ""
-                }/>
-                <div>
-                    <input type="checkbox" name="bestSeller" id="best-seller" value = "${
-                      item ? item.buyAmount : ""
-                    }/>
-                    <label for="best-seller">Best Seller?</label>
-                </div>
-                <button type="submit" class="form__post--create" id="submit">Create course</button>
-                <button type="button" class="form__post--cancel" id="form__post--cancel">Cancel</button>
-            </form>
-        </div>
-    </div>
-</div>`;
-};
-	
-  // ==============================
-  // Edit course modal
-  // editModal(course) {
-  //   let update = document.getElementById("update__form");
-  //   update.className = "update__form";
-  //   let wrapper = document.createElement("div");
-  //   wrapper.className = "wrapper";
-  //   wrapper.id = "wrapper";
 
-  //   let popup = document.createElement("div");
-  //   popup.className = "course__popup";
-  //   update.style.visibility = "hidden";
-  //   popup.id = "course__popup";
-
-  //   let popupContent = document.createElement("div");
-  //   popupContent.className = "popup__content";
-  //   popupContent.textContent = "Update course";
-
-  //   let courseContainer = document.createElement("div");
-  //   courseContainer.className = "course__container";
-  //   courseContainer.textContent = "Update course";
-
-  //   let titleTable = document.createElement("h2");
-  //   titleTable.className = "course__title--table";
-  //   titleTable.textContent = "Update course";
-
-  //   let formPost = document.createElement("form");
-  //   formPost.className = "form__post";
-  //   formPost.textContent = "Update course";
-
-  //   let editImg = document.createElement("input");
-  //   editImg.className = "add-img";
-  //   editImg.textContent = "Update course";
-
-  //   let inputUpdateImg = document.createElement("input");
-  //   inputUpdateImg.className = "update-image";
-  //   inputUpdateImg.id = "update-image";
-  //   inputUpdateImg.value = course.image;
-
-  //   let inputUpdateTitle = document.createElement("input");
-  //   inputUpdateTitle.className = "update-title";
-  //   inputUpdateTitle.id = "update-title";
-  //   inputUpdateTitle.value = course.title;
-
-  //   let inputUpdateAu = document.createElement("input");
-  //   inputUpdateAu.className = "update-author";
-  //   inputUpdateAu.id = "update-author";
-  //   inputUpdateAu.value = course.author;
-
-  //   let inputUpdateRat = document.createElement("input");
-  //   inputUpdateRat.className = "update-rating";
-  //   inputUpdateRat.id = "update-rating";
-  //   inputUpdateRat.value = course.rating;
-
-  //   let inputUpdatePri = document.createElement("input");
-  //   inputUpdatePri.className = "update-price";
-  //   inputUpdatePri.id = "update-price";
-  //   inputUpdatePri.value = course.price;
-
-  //   let inputUpdateBuyA = document.createElement("input");
-  //   inputUpdateBuyA.className = "update-buyAmount";
-  //   inputUpdateBuyA.id = "update-buyAmount";
-  //   inputUpdateBuyA.value = course.buyAmount;
-
-  //   let inputUpdateBestS = document.createElement("input");
-  //   inputUpdateBestS.className = "update-bestSeller";
-  //   inputUpdateBestS.id = "update-bestSeller";
-  //   inputUpdateBestS.value = course.buyAmount;
-  //   let labelUpdateBestS = document.createElement('label')
-	// 	labelUpdateBestS.textContent = 'bestSeller'
-
-  //   let btnUpdate = document.createElement("button");
-  //   btnUpdate.textContent = "Update course";
-  //   btnUpdate.className = "btn-update";
-  //   btnUpdate.id = "btn-update";
-
-  //   //submit edit
-  //   btnUpdate.addEventListener("click", () => {
-  //     const updateForm = document.getElementById("update-form");
-  //     const updateBtn = document.getElementById("Cancel");
-  //     updateForm.style.visibility = "hidden";
-  //   });
-
-  //   const btnCancel = document.createElement("button");
-  //   btnCancel.textContent = "Cancel";
-  //   btnCancel.className = "form__post--cancel";
-
-  //   //close edit modal
-  //   btnCancel.addEventListener("click", () => {
-  //     const updateForm = document.getElementById("update__form");
-  //     const wrapper = document.getElementById("wrapper");
-  //     updateForm.style.visibility = "hidden";
-  //     wrapper.remove();
-  //   });
-
-  //   formPost.append( inputUpdateImg,inputUpdateTitle);
-   
-
-  //   const btn = document.createElement("div");
-  //   btn.className = "update-form-btn";
-  //   btn.id = "update-form-btn";
-
-  //   btn.append(btnUpdate, btnCancel);
-  //   popup.append(
-  //     editTitle,
-  //     inputUpdateImg,
-      
-  //   );
-  //   wrapper.append(popup, btn);
-  //   update.appendChild(wrapper);
-  // }
-
+  // edit
   /**
-   * function use id to update course
+   * function use id
    * Add event 'click' for courseList element
    * Add event 'click' for edit button
    * @param {function} handleUpdateCourse
    */
-  bindUpdateCourse(handleUpdateCourse) {
+  binEditCourseModal = (renderCourseModal) => {
     this.courseList.addEventListener("click", (e) => {
-      if (e.target.className === "edit-btn") {
-        //get id and all the value
-        const id = e.target.parentElement.id;
-        const updateImage = document.getElementById("update-image");
-        const updateTitle = document.getElementById("update-title");
-        const updateAuthor =  document.getElementById("update-author");
-        const updateRating =  document.getElementById("update-rating");
-        const updatePrice = document.getElementById("update-Price");
-        const updateBuyAmount = document.getElementById("update-BuyAmount");
-        const updateBestSeller = document.getElementById("update-BestSeller");
-        const edit = document.getElementById("btn-update");
-        //submit edit
-        edit.addEventListener("click", () => {
-          handler(
-            id,
-            updateTitle.value,
-            updateAuthor.value,
-            updateRating.value,
-            updatePrice.value,
-            updateBuyAmount.value,
-            updateBuyAmount.value,
-	    updateBestSeller.value 
-          );
-          const wrapper = document.getElementById("wrapper");
-          //remove edit modal
-          if (wrapper) {
-            wrapper.remove();
-          }
-        });
+      //
+      if (e.target.className === "course__edit") {
+        const id = e.target.parentNode.parentNode.id;
+        const course = renderCourseModal(id);
+        this.openCourseModal(course);
       }
     });
-  }
+  };
 
-  // delete
   /**
-     * function use id to delete course
-     * Add event 'click' for courseList element
-     * Add event 'click' for delete button
-     * @param {function} handlerDeleteCourse
-     */
-	  bindDeleteCourse(handlerDeleteCourse) {
-        this.courseList.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (e.target.className === "course__remove") {
-                const id = e.target.parentElement.parentElement.id;
-                handlerDeleteCourse(id);
-            }
-        });
-    }
-// 	bindDeleteCourse(handleDeleteCourse) {
-//     this.courseList.addEventListener('click', e => {
-//       //Use check variable to avoid duplicate event
-//       let check = 0
-//         if (e.target.className === 'course__remove') {
-//             const id = e.target.parentElement.parentElement.id
-//             const deleteForm = document.getElementById('delete-form')
-
-//             icon.addEventListener('click',()=>{
-//               this.closeModalDelete()
-//               check++
-//             })
-//             const sureDelete = document.getElementById("delete__btn")
-//             sureDelete.addEventListener('click',()=>{
-//               if(check === 0) {
-//                 handler(id)
-//                 this.closeModalDelete()
-//                 check++
-//               }
-//             })
-//         }
-//     })
-//   }
-
-  bindSearchCourse(handler) {
-    this.search.addEventListener("click", () => {
-      if (this.filterInput.value === "") {
-        alert("Enter the course name you want to find");
-      }
-      if (this.filterInput.vale !== "") {
-        handler(this.filterInput.value);
+   * function use id to delete course
+   * Add event 'click' for courseList element
+   * Add event 'click' for delete button
+   * @param {function} handlerDeleteCourse
+   */
+  bindDeleteCourse(handlerDeleteCourse) {
+    this.courseList.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (e.target.className === "course__remove") {
+        const id = e.target.parentNode.parentNode.id;
+        handlerDeleteCourse(id);
       }
     });
-
-    this.filterInput.addEventListener("keydown", async (e) => {
-      const response = await fetch(
-        `${path.PATH_COURSE}/title_like=${e.target.value}`
-      );
-      const data = await response.json();
-      console.log(data);
-    });
-  }
-
-  bindFilterCourse(handler) {
-    
-  }
+  } 
 }
