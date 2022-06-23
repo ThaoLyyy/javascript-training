@@ -13,12 +13,12 @@
       <input
         type="text"
         class="main-header__filter"
-        id="search-input"
+        id="search__input"
         name="filter"
         placeholder="search..."
       />
     </header>
-    <div class="course" id="add-new-course">
+    <div class="course" id="add__course">
       <div class="container">        
         <button class="course__button" id="course__button">Add courses</button>
       <!-- create form-->        
@@ -29,28 +29,28 @@
               <form class="form__post" id="form__post" autocomplete="off">
                 <input
                   type="url"
-                  id="add-img"
+                  id="course__img"
                   name="image"
                   placeholder="Image url"
                   required
                 />
                 <input
                   type="text"
-                  id="add-title"
+                  id="course__title"
                   name="title"
                   placeholder="Enter your title"
                   required
                 />
                 <input
                   type="text"
-                  id="add-author"
+                  id="course__author"
                   name="author"
                   placeholder="Enter your author"
                   required
                 />
                 <input
                   type="number"
-                  id="add-rating"
+                  id="course__rating"
                   name="rating"
                   placeholder="Rating"
                   min="1"
@@ -59,7 +59,7 @@
                 />
                 <input
                   type="number"
-                  id="add-price"
+                  id="course__price"
                   name="price"
                   placeholder="Price"
                   min="1"
@@ -68,19 +68,23 @@
 
                 <input
                   type="number"
-                  id="add-buyAmount"
+                  id="course__buyAmount"
                   name="buyAmount"
                   placeholder="Buy amount"
-                  value="0"
                   min="0"
                   required
                 />
                 <div>
-                  <input type="checkbox" name="bestSeller" id="add-best-seller" />
+                  <input
+                  type="checkbox"
+                  id="course__bestseller"
+                  name="bestSeller"
+                  placeholder="bestSeller"
+                />                 
                   <label for="best-seller">Best Seller?</label>
                 </div>
-                  <button type="submit" class="form__post--create" id="submit" >Create course</button>
-                  <button type="button" class="form__post--cancel" id="form__post--cancel" >Cancel</button>
+                  <button type="submit" class="form__post--create" id="btn__submit" >Create course</button>
+                  <button type="button" class="form__post--cancel" id="btn__cancel" >Cancel</button>
               </form>
             </div>
           </div>
@@ -89,10 +93,7 @@
       
       <div class="course__list" id="course__list">         
       </div>
-      
-      <!-- update form-->
-      <div id="update__form">
-      </div>
+
       <!-- delete form -->
       <div id="modal__delete" class="modal__delete">
         <form class="modal__content" >
@@ -100,7 +101,7 @@
             <h2 class="modal__container--title">Delete Course</h2>
             <p class="modal__container--confirm">Are you sure you want to delete course?</p>
           
-            <div class="clear__fix">
+            <div class="modal__footer">
               <button type="button" class="delete__btn" id="delete__btn">Delete</button>
               <button type="button" class="cancel__btn" id="cancel__btn">Cancel</button>
             </div>
