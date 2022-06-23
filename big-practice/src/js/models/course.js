@@ -79,19 +79,9 @@ export default class Model {
    * Search all course that match
    * @returns {array} course
    */
-  // searchCourse = async (title) => {
-  //   const course = await fetch.get(`/${path.PATH_COURSE}?q=${title}`);
-  //   this.courses = course;
-  //   return course;
-  // };
-
-  /**
-   * Filter all course that match
-   * @returns {array}
-   */
-  // filterCourse = async (title) => {
-  //   const course = await fetch.get(`/${path.PATH_COURSE}?title=${title}`);
-  //   this.courses = course;
-  //   return course;
-  // };
+  searchCourse = async (querySearch) => {
+    if (querySearch) {
+      return this.courses.filter((item) => item.title.includes(querySearch));
+    }
+  };
 }
