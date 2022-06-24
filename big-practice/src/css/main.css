@@ -80,13 +80,6 @@ body {
   margin-top: 25px;
   font-weight: 600;
 }
-.course__button.course__close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 5px 10px;
-  border-radius: 0px;
-}
 .form__post {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -127,17 +120,7 @@ body {
   height: 300px;
   position: relative;
 }
-.course-edit {
-  cursor: pointer;
-  background-color: #808080;
-  border: none;
-  outline: none;
-  padding: 6px 8px;
-  display: inline-block;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
+
 .course__remove {
   cursor: pointer;
   color: #fff;
@@ -211,23 +194,6 @@ body {
   gap: 0 10px;
   font-size: 20px;
 }
-.course__remove {
-  cursor: pointer;
-  color: #fff;
-  background-color: #ff6651;
-  border: none;
-  border-radius: 50%;
-  outline: none;
-  padding: 8px 10px;
-  display: inline-block;
-  position: absolute;
-  top: 9px;
-  right: 10px;
-}
-.course__remove i {
-  pointer-events: none;
-  font-size: 18px;
-}
 .modal__container--title {
   text-align: center;
   margin-top: 20px;
@@ -240,7 +206,7 @@ body {
   font-size: 18px;
 }
 /* Float cancel and delete buttons and add an equal width */
-.cancel__btn,
+.cancelDel__btn,
 .delete__btn {
   float: left;
   width: 50%;
@@ -250,7 +216,7 @@ body {
   font-size: 16px;
 }
 /* Add a color to the cancel button */
-.cancel__btn {
+.cancelDel__btn {
   background-color: #ede3e3de;
   color: black;
 }
@@ -275,6 +241,9 @@ body {
   top: 10px;
   left: 10px;
 }
+.course__edit:hover{
+  background: #fff;
+}
 /* The Modal (background) */
 .modal__delete {
   display: none; /* Hidden by default */
@@ -296,6 +265,20 @@ body {
   width: 50%; /* Could be more or less, depending on screen size */
 }
 /* The Modal Close Button (x) */
+.btn__close {
+  text-align: center;
+  color: #fff;
+  border: none;
+  margin-left: 25px;
+  display: inline-block;
+  background-color: #ff6651 ;
+  border-radius: 0;
+  padding: 8px 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+}
 .close {
   position: absolute;
   right: 35px;
