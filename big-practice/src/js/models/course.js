@@ -16,8 +16,9 @@ export default class Model {
     return this.courses;
   };
 
-  getCourseById = async () => {
-    return this.course.find((item) => item.id === id);
+  getCourseById = (id) => {
+    const data = this.courses.find((item) => item.id === id);
+    return data;
   };
 
   /**
@@ -53,7 +54,6 @@ export default class Model {
    */
   updateCourse = async (data) => {
     const dataParam = {
-      // id: uuidv4(),
       image: data.image,
       title: data.title,
       author: data.author,
@@ -62,15 +62,15 @@ export default class Model {
       buyAmount: data.buyAmount,
       bestSeller: data.bestSeller,
     };
-    const course = await fetch.update(`/${path.PATH_COURSE}`, dataParam);
-    const index = this.courses.findIndex((course) => course.id === id);
-    this.courses.slice(index, 1, course);
+    const course = await fetch.update(`/${path.PATH_COURSE}/${id}`, dataParam);
+    const index = this.courses.findIndex((item) => item.id === id);
+    this.courses.splice(index, 1, course);
     return course;
   };
 
   deleteCourse = async (id) => {
     const course = await fetch.remove(`/${path.PATH_COURSE}/${id}`);
-    const index = this.courses.findIndex((course) => course.id === id);
+    const index = this.courses.findIndex((item) => item.id === course.id);
     this.courses.splice(index, 1);
     return course;
   };
