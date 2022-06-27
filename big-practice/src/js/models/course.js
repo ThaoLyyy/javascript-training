@@ -70,9 +70,9 @@ export default class Model {
 
   deleteCourse = async (id) => {
     const course = await fetch.remove(`/${path.PATH_COURSE}/${id}`);
-    const index = this.courses.findIndex((item) => item.id === course.id);
+    this.courses = this.courses.find((item) => item.id !== course.id);
     this.courses.splice(index, 1);
-    return course;
+    return this.course;
   };
 
   /**
