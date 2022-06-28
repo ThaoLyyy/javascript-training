@@ -20,17 +20,19 @@
     </header>
     <div class="course" id="add__course">
       <div class="container">        
-        <button class="course__button" id="course__button">Add courses</button>
+        <button class="course__button" id="course__button">add courses</button>
       <!-- create form-->        
-        <div id="course__popup" class="popup" active>
+        <div id="course__popup" class="course__popup" active>
           <div class="popup__content">
             <div class="course__container">
-              <h2 class="course__title--table">New Course</h2>
+            <span id="btn__close" class="btn__close" ><i class="fa fa-times"></i></span>
+              <h2 id="title__table" class="course__title--table">new Course</h2>
               <form class="form__post" id="form__post" autocomplete="off">
                 <input
                   type="url"
                   id="course__img"
                   name="image"
+                  alt="courseImg"
                   placeholder="Image url"
                   required
                 />
@@ -38,6 +40,7 @@
                   type="text"
                   id="course__title"
                   name="title"
+                  alt="title"
                   placeholder="Enter your title"
                   required
                 />
@@ -45,6 +48,7 @@
                   type="text"
                   id="course__author"
                   name="author"
+                  alt="author"
                   placeholder="Enter your author"
                   required
                 />
@@ -52,6 +56,7 @@
                   type="number"
                   id="course__rating"
                   name="rating"
+                  alt="rating"
                   placeholder="Rating"
                   min="1"
                   max="5"
@@ -61,6 +66,7 @@
                   type="number"
                   id="course__price"
                   name="price"
+                  alt="price"
                   placeholder="Price"
                   min="1"
                   required
@@ -70,6 +76,7 @@
                   type="number"
                   id="course__buyAmount"
                   name="buyAmount"
+                  alt="buyAmount"
                   placeholder="Buy amount"
                   min="0"
                   required
@@ -79,12 +86,13 @@
                   type="checkbox"
                   id="course__bestseller"
                   name="bestSeller"
+                  alt="bestSeller"
                   placeholder="bestSeller"
                 />                 
-                  <label for="best-seller">Best Seller?</label>
+                  <label for="best-seller" class="form__post--besl">best seller?</label>
                 </div>
-                  <button type="submit" class="form__post--create" id="btn__submit" >Create course</button>
-                  <button type="button" class="form__post--cancel" id="btn__cancel" >Cancel</button>
+                  <button type="submit" class="form__post--create" id="btn__submit" >create course</button>
+                  <button type="button" class="form__post--cancel" id="btn__cancel" >cancel</button>
               </form>
             </div>
           </div>
@@ -98,12 +106,12 @@
       <div id="modal__delete" class="modal__delete">
         <form class="modal__content" >
           <div class="modal__container">
-            <h2 class="modal__container--title">Delete Course</h2>
+            <h2 class="modal__container--title">delete Course</h2>
             <p class="modal__container--confirm">Are you sure you want to delete course?</p>
           
             <div class="modal__footer">
-              <button type="button" class="delete__btn" id="delete__btn">Delete</button>
-              <button type="button" class="cancel__btn" id="cancel__btn">Cancel</button>
+              <button type="button" class="delete__btn" id="delete__btn">delete</button>
+              <button type="button" class="cancelDel__btn" id="cancelDel__btn">cancel</button>
             </div>
           </div>
         </form>
