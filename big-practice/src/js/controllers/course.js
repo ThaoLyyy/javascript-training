@@ -7,6 +7,7 @@ export default class Controller {
 
     this.view.bindShowCourseModal();
     this.view.bindAddNewCourse(this.handleAddNewCourse);
+    this.view.bindBtnClose();
     this.view.bindCloseCourseModal();
     this.view.binEditCourseModal(this.getCourseById);
     this.view.bindDeleteCourse(this.handleDeleteCourse);
