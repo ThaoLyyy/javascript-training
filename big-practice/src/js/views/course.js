@@ -8,12 +8,18 @@ export default class View {
     this.courseBuyAmount = document.getElementById("course__buyAmount");
     this.courseBestSeller = document.getElementById("course__bestseller");
     this.courseList = document.getElementById("course__list");
+    this.courseTitleTable = document.getElementById("title__table");
     this.submitBtn = document.getElementById("btn__submit");
     this.cancelBtn = document.getElementById("btn__cancel");
     this.formPost = document.getElementById("form__post");
     this.filterInput = document.getElementById("search__input");
     this.courseModal = document.getElementById("course__popup");
-    this.addCourseBtn = document.getElementById("add__course");
+    // this.addCourseBtn = document.getElementById("add__course");
+    this.courseBtn = document.getElementById("course__button");
+    this.formSubmit = document.getElementById("form__post--create");
+    this.btnClose = document.getElementById("btn__close");
+    this.courseModalDelete = document.getElementById("modal__delete");
+    let updateId = null;
   }
 
   // Reset the input after add course
@@ -30,6 +36,7 @@ export default class View {
   openCourseModal = (course) => {
     if (course) {
       // change value for form
+      this.courseTitleTable.textContent = "edit course";
       this.courseImg.value = course.image;
       this.courseTitle.value = course.title;
       this.courseAuthor.value = course.author;
@@ -37,19 +44,21 @@ export default class View {
       this.coursePrice.value = course.price;
       this.courseBuyAmount.value = course.buyAmount;
       this.courseBestSeller.checked = course.bestSeller;
-    }
+      this.submitBtn.textContent = "update course";
+    };
     this.courseModal.style.visibility = "visible";
   };
 
   closeCourseModal = () => {
     this.courseModal.style.visibility = "hidden";
+    console.log("closeCourseModal");
     this.resetInput();
   };
 
   // Close delete course modal
-  closeModalDelete() {
-    const deleteForm = document.getElementById("modal__delete");
-    deleteForm.style.visibility = "visible";
+  closeCourseModalDelete() {
+    const closeCourseModalDelete = document.getElementById("modal__delete");
+    closeCourseModalDelete.style.visibility = "visible";
   }
 
   //Render
@@ -127,13 +136,19 @@ export default class View {
   };
 
   bindShowCourseModal = () => {
-    this.addCourseBtn.addEventListener("click", () => {
+    this.courseBtn.addEventListener("click", () => {
       this.openCourseModal();
     });
   };
 
   bindCloseCourseModal = () => {
     this.cancelBtn.addEventListener("click", () => {
+      this.closeCourseModal();
+    });
+  };
+
+  bindBtnClose = () => {
+    this.btnClose.addEventListener("click", () => {
       this.closeCourseModal();
     });
   };
@@ -178,8 +193,7 @@ export default class View {
         this.courseAuthor.value &&
         this.courseRating.value &&
         this.coursePrice.value &&
-        this.courseBuyAmount.value &&
-        this.courseBestSeller.checked
+        this.courseBuyAmount.value
       ) {
         handleAddNewCourse({
           image: this.courseImg.value,
@@ -187,12 +201,14 @@ export default class View {
           author: this.courseAuthor.value,
           rating: +this.courseRating.value,
           price: +this.coursePrice.value,
-          buyAmount: this.courseBuyAmount.value,
-          bestSeller: +this.courseBestSeller.checked,
+          buyAmount: +this.courseBuyAmount.value,
+          bestSeller: this.courseBestSeller.checked,
         });
-        // this.modelContent.innerHTML = "";
-        this.closeCourseModal();
-        this._resetInput();
+        // this.modelContent.insertAdjacentHTML = "";
+        this.courseList.innerHTML = "";
+        // this.closeCourseModal();
+        this.resetInput();
+
       } else {
         alert("Please enter all before create a new course!!");
       }
@@ -204,7 +220,6 @@ export default class View {
    * function use id
    * Add event 'click' for courseList element
    * Add event 'click' for edit button
-   * @param {function} handleUpdateCourse
    */
   binEditCourseModal = (renderCourseModal) => {
     this.courseList.addEventListener("click", (e) => {
@@ -214,6 +229,14 @@ export default class View {
         const course = renderCourseModal(id);
         this.openCourseModal(course);
       }
+      // {
+      //   updateId ? await updateCourse({ id: updateId, ...course }) : await addNewCourse(course);
+      // this.resetInput();
+      // await getElementById();
+      // updateId = null;
+      // }
+      
+      submitBtn.textContent = "Update course";
     });
   };
 
@@ -225,11 +248,12 @@ export default class View {
    */
   bindDeleteCourse(handlerDeleteCourse) {
     this.courseList.addEventListener("click", (e) => {
-      e.preventDefault();
+      // e.preventDefault();
+
       if (e.target.className === "course__remove") {
         const id = e.target.parentNode.parentNode.id;
         handlerDeleteCourse(id);
       }
     });
-  } 
+  }
 }
