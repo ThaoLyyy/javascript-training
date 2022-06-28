@@ -13,6 +13,16 @@ body {
   background-color: #e9cbc8;
   font-family: Roboto, sans-serif;
 }
+.course__button,
+.course__title--table,
+.form__post--besl,
+.form__post--create,
+.form__post--cancel,
+.modal__container--title,
+.delete__btn,
+.cancelDel__btn {
+  text-transform: capitalize;
+}
 .main-header__title {
   margin: 30px;
   text-align: center;
@@ -50,7 +60,7 @@ body {
   color: #000;
   font-weight: bold;
 }
-.popup {
+.course__popup {
   z-index: 3;
   padding-top: 180px;
   position: fixed;
@@ -61,6 +71,8 @@ body {
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
   visibility: hidden;
+  /* text-indent: 0; */
+  /* opacity: 1; */
 }
 .popup__content {
   margin: auto;
@@ -76,7 +88,7 @@ body {
 }
 .course__title--table {
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   margin-top: 25px;
   font-weight: 600;
 }
@@ -100,12 +112,20 @@ body {
   padding: 10px 15px;
   border-radius: 10px;
   font-size: 16px;
+  text-transform: capitalize;
 }
 .form__post--cancel {
   border-radius: 10px;
   border: 0;
   font-size: 16px;
   background-color: #cfc5c5de;
+}
+.form__post--create:hover,
+.form__post--create:focus,
+.form__post--cancel:hover,
+.form__post--cancel:focus {
+  color: #0c0b0b;
+  font-weight: bold;
 }
 .course__list {
   width: 1200px;
@@ -137,6 +157,11 @@ body {
 .course__remove i {
   pointer-events: none;
   font-size: 18px;
+}
+.course__remove:hover,
+.course__remove:focus {
+  color: #0c0b0b;
+  font-weight: bold;
 }
 .course__image-btn {
   height: 300px;
@@ -208,11 +233,11 @@ body {
 /* Float cancel and delete buttons and add an equal width */
 .cancelDel__btn,
 .delete__btn {
-  float: left;
-  width: 50%;
+  float: center;
+  /* width: 50%; */
   border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
+  border-radius: 10px;
+  padding: 10px 40px;
   font-size: 16px;
 }
 /* Add a color to the cancel button */
@@ -241,12 +266,17 @@ body {
   top: 10px;
   left: 10px;
 }
-.course__edit:hover{
+.course__edit:hover {
   background: #fff;
+}
+course__edit i {
+  pointer-events: none;
+  font-size: 14px;
 }
 /* The Modal (background) */
 .modal__delete {
-  display: none; /* Hidden by default */
+  /* display: none;  */
+  /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 3; /* Sit on top */
   left: 0;
@@ -256,6 +286,7 @@ body {
   overflow: auto; /* Enable scroll if needed */
   background-color: #0006;
   padding-top: 180px;
+  visibility: hidden;
 }
 /* Modal Content/Box */
 .modal__content {
@@ -271,25 +302,17 @@ body {
   border: none;
   margin-left: 25px;
   display: inline-block;
-  background-color: #ff6651 ;
+  background-color: #ff6651;
   border-radius: 0;
   padding: 8px 15px;
   position: absolute;
   top: 0;
   right: 0;
-
+  /* visibility: hidden !important; */
 }
-.close {
-  position: absolute;
-  right: 35px;
-  top: 15px;
-  font-size: 40px;
-  font-weight: bold;
-  color: #f1f1f1;
-}
-.close:hover,
-.close:focus {
-  color: #f44336;
+.btn__close:hover,
+.btn__close:focus {
+  color: #0c0b0b;
   cursor: pointer;
 }
 .modal__footer::after {
@@ -299,7 +322,7 @@ body {
 }
 
 .modal__delete {
-  z-index: 3;
+  /* z-index: 3;
   width: 100%;
   height: 100%;
   background-color: #0006;
@@ -307,5 +330,6 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  visibility: hidden;
+  visibility: hidden; */
+  /* opacity: 0;  */
 }
