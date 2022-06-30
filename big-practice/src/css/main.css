@@ -72,7 +72,6 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   visibility: hidden;
   /* text-indent: 0; */
-  /* opacity: 1; */
 }
 .popup__content {
   margin: auto;
@@ -81,6 +80,7 @@ body {
   padding: 0;
   outline: 0;
   width: 850px;
+  /* visibility: hidden !important; */
 }
 .course__container {
   padding: 2px 16px;
@@ -223,7 +223,7 @@ body {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 30px;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 600;
 }
 .modal__container--confirm {
@@ -234,7 +234,6 @@ body {
 .cancelDel__btn,
 .delete__btn {
   float: center;
-  /* width: 50%; */
   border: none;
   border-radius: 10px;
   padding: 10px 40px;
@@ -245,9 +244,14 @@ body {
   background-color: #ede3e3de;
   color: black;
 }
+.delete__btn:hover, .cancelDel__btn:hover{
+  color: #000;
+  font-weight: bold;
+}
 /* Add a color to the delete button */
 .delete__btn {
-  background-color: #ff6651 !important;
+  background-color: #ff6651;
+  color: #fff;
 }
 /* Add padding and center-align text to the container */
 .modal__container {
@@ -319,17 +323,4 @@ course__edit i {
   content: "";
   clear: both;
   display: table;
-}
-
-.modal__delete {
-  /* z-index: 3;
-  width: 100%;
-  height: 100%;
-  background-color: #0006;
-  padding-top: 180px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  visibility: hidden; */
-  /* opacity: 0;  */
 }
