@@ -56,13 +56,16 @@ cd big_practice
 ```
 npm install
 ```
-
 - Run application
 
 ```
 npm start
 ```
+- Run server
 
+```
+npm run dev
+```
 - Open browser with the link below
 
 ```
