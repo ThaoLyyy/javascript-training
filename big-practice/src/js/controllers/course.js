@@ -6,11 +6,14 @@ export default class Controller {
     this.init();
 
     this.view.bindShowCourseModal();
-    this.view.bindAddNewCourse(this.handleAddNewCourse);
     this.view.bindBtnClose();
+    this.view.bindAddNewCourse(this.handleAddNewCourse);
     this.view.bindCloseCourseModal();
-    this.view.binEditCourseModal(this.getCourseById);
+    this.view.bindEditCourseModal(this.getCourseById);
+    this.view.bindShowCourseModalDel();
+    this.view.bindCloseCourseModalDel();
     this.view.bindDeleteCourse(this.handleDeleteCourse);
+    this.view.bindSearchCourse(this.handleSearchCourse);
   }
 
   init = async () => {
@@ -31,6 +34,11 @@ export default class Controller {
     this.onCourseListChanged(this.model.courses);
   };
 
+  handleEditCourseModal = async (data) => {
+    const course = await this.model.updateCourse(data);
+    this.onCourseListChanged(this.model.courses);
+  };
+
   /**
    * Use id from views call to models
    * @param {string} id
@@ -40,4 +48,12 @@ export default class Controller {
     this.onCourseListChanged(this.model.courses);
   };
 
+  /**
+   * Use title from views call to models
+   * @param {string} title
+   */
+  handleSearchCourse = async (title) => {
+    const courses = await this.model.searchCourse(title);
+    this.onCourseListChanged(this.model.courses);
+  };
 }
