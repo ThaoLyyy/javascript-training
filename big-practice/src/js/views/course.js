@@ -19,9 +19,8 @@ export default class View {
     this.courseBtn = document.getElementById("course__button");
     this.formSubmit = document.getElementById("form__post--create");
     this.btnClose = document.getElementById("btn__close");
-    this.courseRemove = document.getElementsByClassName("course__remove");
+    this.courseRemove = document.getElementById("course__remove");
     this.cancelDel = document.getElementById("cancelDel__btn");
-    this.btnDel = document.getElementById("cancelDel__btn");
     this.ENTER_KEY = 13;
     let updateId = null;
   }
@@ -49,6 +48,7 @@ export default class View {
       this.courseBuyAmount.value = course.buyAmount;
       this.courseBestSeller.checked = course.bestSeller;
       this.submitBtn.textContent = "update course";
+      // updateId = id;
     }
     this.courseModal.style.visibility = "visible";
   };
@@ -59,19 +59,18 @@ export default class View {
     this.resetInput();
   };
 
-  // open model delete
   openCourseModalDel = () => {
     this.courseModalDel.style.visibility = "visible";
   };
   // Close delete course modal
   closeCourseModalDel() {
     this.courseModalDel.style.visibility = "hidden";
-    console.log("courseModalDel");
+    // console.log("courseModalDel");
   }
 
   //Render
   displayCourses = (courses) => {
-    if (courses.length !== 0) {
+    if (courses.length > 0) {
       const wrapper = document.getElementsByClassName("course__list");
       wrapper[0].innerHTML = "";
 
@@ -94,9 +93,12 @@ export default class View {
         btnEdit.append(editIcon);
 
         const btnDelete = document.createElement("button");
+        btnDelete.setAttribute("id", "course__remove");
         const icondel = document.createElement("i");
+        // icondel.setAttribute("id", "close__icon");
         icondel.className = "fa fa-times";
         btnDelete.className = "course__remove";
+        btnDelete.idName = "course__remove";
         btnDelete.append(icondel);
 
         courseImg.append(img, btnEdit, btnDelete);
@@ -161,6 +163,7 @@ export default class View {
     });
   };
 
+  // const buttonElement = document.querySelector("button");
   bindShowCourseModalDel = () => {
     this.courseList.addEventListener("click", () => {
       this.openCourseModalDel();
@@ -266,15 +269,12 @@ export default class View {
    */
   bindDeleteCourse(handlerDeleteCourse) {
     this.courseList.addEventListener("click", (e) => {
-      // e.preventDefault();
-
-      //Use check variable to avoid duplicate event
       let check = 0;
-      if (e.target.className === "delete__btn") {
-        const id = e.target.parentNode.parentNode.id;
-        // handlerDeleteCourse(id);
-        this.btnDel.addEventListener("click", () => {
+      if (e.target.className === "course__remove") {
+        const btnDel = document.getElementById("delete__btn");
+        btnDel.addEventListener("click", () => {
           if (check === 0) {
+            const id = e.target.parentNode.parentNode.id;
             handlerDeleteCourse(id);
             this.closeCourseModalDel();
             check++;
@@ -284,4 +284,16 @@ export default class View {
     });
   }
 
+  /**
+   * function use information to search course
+   * Add event 'keydown' for search input
+   * @param {function} handleSearchCourse
+   */
+  bindSearchCourse(handleSearchCourse) {
+    this.searchCourse.addEventListener("keyup", (e) => {
+      if (e.which === this.ENTER_KEY) {
+        handleSearchCourse(this.searchCourse.value.trim());
+      }
+    });
+  }
 }
