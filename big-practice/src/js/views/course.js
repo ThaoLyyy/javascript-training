@@ -21,9 +21,8 @@ export default class View {
     this.btnClose = document.getElementById("btn__close");
     // this.courseRemove = document.querySelector(".course__remove");
     this.courseRemove = document.getElementById("course__remove");
-    // this.iconBtnDel = document.getElementById("close__icon");
     this.cancelDel = document.getElementById("cancelDel__btn");
-    // this.btnDel = document.getElementById("delete__btn");
+    this.btnDel = document.getElementById("delete__btn");
     this.enter__key = 13;
     let updateId = null;
   }
@@ -58,7 +57,7 @@ export default class View {
 
   closeCourseModal = () => {
     this.courseModal.style.visibility = "hidden";
-//     console.log("closeCourseModal");
+    console.log("closeCourseModal");
     this.resetInput();
   };
 
@@ -68,7 +67,6 @@ export default class View {
   // Close delete course modal
   closeCourseModalDel() {
     this.courseModalDel.style.visibility = "hidden";
-    // console.log("courseModalDel");
   }
 
   //Render
@@ -98,7 +96,6 @@ export default class View {
         const btnDelete = document.createElement("button");
         btnDelete.setAttribute("id", "course__remove");
         const icondel = document.createElement("i");
-        // icondel.setAttribute("id", "close__icon");
         icondel.className = "fa fa-times";
         btnDelete.className = "course__remove";
         btnDelete.idName = "course__remove";
@@ -263,12 +260,17 @@ export default class View {
     });
   };
 
+  /**
+   * function use id to delete course
+   * Add event 'click' for courseList element
+   * Add event 'click' for delete button
+   * @param {function} handlerDeleteCourse
+   */
   bindDeleteCourse(handlerDeleteCourse) {
     this.courseList.addEventListener("click", (e) => {
       let check = 0;
       if (e.target.className === "course__remove") {
-        const btnDel = document.getElementById("delete__btn");
-        btnDel.addEventListener("click", () => {
+        this.btnDel.addEventListener("click", () => {
           if (check === 0) {
             const id = e.target.parentNode.parentNode.id;
             handlerDeleteCourse(id);
@@ -282,13 +284,13 @@ export default class View {
 
   /**
    * function use information to search course
-   * Add event 'keydown' for search input
+   * Add event 'keyup' for search input
    * @param {function} handleSearchCourse
    */
   bindSearchCourse(handleSearchCourse) {
     this.searchCourse.addEventListener("keyup", (e) => {
       if (e.which === this.enter__key) {
-        handleSearchCourse(this.searchCourse.value.trim());       
+        handleSearchCourse(this.searchCourse.value.trim());
       }
     });
   }
