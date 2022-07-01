@@ -54,6 +54,6 @@ export default class Controller {
    */
   handleSearchCourse = async (title) => {
     const courses = await this.model.searchCourse(title);
-    this.onCourseListChanged(this.model.courses);
+    this.onCourseListChanged(courses);
   };
 }
