@@ -79,9 +79,10 @@ export default class Model {
    * Search all course that match
    * @returns {array} course
    */
-  searchCourse = async (querySearch) => {
+   searchCourse = async (querySearch) => {
     if (querySearch) {
       return this.courses.filter((item) => item.title.includes(querySearch));
     }
+    return this.courses
   };
 }
