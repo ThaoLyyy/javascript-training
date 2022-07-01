@@ -19,9 +19,12 @@ export default class View {
     this.courseBtn = document.getElementById("course__button");
     this.formSubmit = document.getElementById("form__post--create");
     this.btnClose = document.getElementById("btn__close");
+    // this.courseRemove = document.querySelector(".course__remove");
     this.courseRemove = document.getElementById("course__remove");
+    // this.iconBtnDel = document.getElementById("close__icon");
     this.cancelDel = document.getElementById("cancelDel__btn");
-    this.ENTER_KEY = 13;
+    // this.btnDel = document.getElementById("delete__btn");
+    this.enter__key = 13;
     let updateId = null;
   }
 
@@ -55,7 +58,7 @@ export default class View {
 
   closeCourseModal = () => {
     this.courseModal.style.visibility = "hidden";
-    console.log("closeCourseModal");
+//     console.log("closeCourseModal");
     this.resetInput();
   };
 
@@ -163,7 +166,6 @@ export default class View {
     });
   };
 
-  // const buttonElement = document.querySelector("button");
   bindShowCourseModalDel = () => {
     this.courseList.addEventListener("click", () => {
       this.openCourseModalDel();
@@ -261,12 +263,6 @@ export default class View {
     });
   };
 
-  /**
-   * function use id to delete course
-   * Add event 'click' for courseList element
-   * Add event 'click' for delete button
-   * @param {function} handlerDeleteCourse
-   */
   bindDeleteCourse(handlerDeleteCourse) {
     this.courseList.addEventListener("click", (e) => {
       let check = 0;
@@ -291,8 +287,8 @@ export default class View {
    */
   bindSearchCourse(handleSearchCourse) {
     this.searchCourse.addEventListener("keyup", (e) => {
-      if (e.which === this.ENTER_KEY) {
-        handleSearchCourse(this.searchCourse.value.trim());
+      if (e.which === this.enter__key) {
+        handleSearchCourse(this.searchCourse.value.trim());       
       }
     });
   }
