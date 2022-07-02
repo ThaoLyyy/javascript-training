@@ -66,23 +66,24 @@ export default class Model {
     const index = this.courses.findIndex((item) => item.id === id);
     this.courses.splice(index, 1, course);
     return course;
+
   };
 
   deleteCourse = async (id) => {
     const course = await fetch.remove(`/${path.PATH_COURSE}/${id}`);
-    this.courses = this.courses.find((item) => item.id !== course.id);
+    const index = this.courses.findIndex((item) => item.id === course.id);
     this.courses.splice(index, 1);
-    return this.course;
+    return course;
   };
 
   /**
    * Search all course that match
    * @returns {array} course
    */
-   searchCourse = async (querySearch) => {
+  searchCourse = async (querySearch) => {
     if (querySearch) {
       return this.courses.filter((item) => item.title.includes(querySearch));
     }
     return this.courses
-  };
+  };  
 }
