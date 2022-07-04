@@ -5,8 +5,8 @@ export default class View {
     this.courseAuthor = document.getElementById("course__author");
     this.courseRating = document.getElementById("course__rating");
     this.coursePrice = document.getElementById("course__price");
-    this.courseBuyAmount = document.getElementById("course__buyAmount");
-    this.courseBestSeller = document.getElementById("course__bestseller");
+    this.courseBuyAmount = document.getElementById("course__buy--amount");
+    this.courseBestSeller = document.getElementById("course__best--seller");
     this.courseList = document.getElementById("course__list");
     this.courseTitleTable = document.getElementById("title__table");
     this.modalTitleDel = document.getElementById("modal__container--title");
@@ -19,11 +19,10 @@ export default class View {
     this.courseBtn = document.getElementById("course__button");
     this.formSubmit = document.getElementById("form__post--create");
     this.btnClose = document.getElementById("btn__close");
-    // this.courseRemove = document.querySelector(".course__remove");
     this.courseRemove = document.getElementById("course__remove");
     this.cancelDel = document.getElementById("cancelDel__btn");
     this.btnDel = document.getElementById("delete__btn");
-    this.enter__key = 13;
+    this.ENTER_KEY = 13;
     let updateId = null;
   }
 
@@ -50,14 +49,13 @@ export default class View {
       this.courseBuyAmount.value = course.buyAmount;
       this.courseBestSeller.checked = course.bestSeller;
       this.submitBtn.textContent = "update course";
-      // updateId = id;
     }
     this.courseModal.style.visibility = "visible";
   };
 
   closeCourseModal = () => {
     this.courseModal.style.visibility = "hidden";
-    console.log("closeCourseModal");
+    // console.log("closeCourseModal");
     this.resetInput();
   };
 
@@ -134,7 +132,7 @@ export default class View {
         courseMeta.append(rating, price, buyAmount);
 
         const bestSeller = document.createElement("div");
-        bestSeller.className = "course__best-seller";
+        bestSeller.className = "course__best--seller";
         bestSeller.textContent = course.bestSeller;
 
         courseContent.append(title, author, courseMeta, bestSeller);
@@ -164,8 +162,10 @@ export default class View {
   };
 
   bindShowCourseModalDel = () => {
-    this.courseList.addEventListener("click", () => {
-      this.openCourseModalDel();
+    this.courseList.addEventListener("click", (e) => {
+      if (e.target.className === "course__remove") {
+        this.openCourseModalDel();
+      }
     });
   };
 
@@ -181,7 +181,7 @@ export default class View {
    */
   bindAddNewCourse(handleAddNewCourse) {
     this.submitBtn.addEventListener("click", (e) => {
-      e.preventDefault();
+      // e.preventDefault();
       // validation
       if (this.courseImg.value == "") {
         alert("please enter your url image");
@@ -216,34 +216,41 @@ export default class View {
         this.courseRating.value &&
         this.coursePrice.value &&
         this.courseBuyAmount.value
-      ) {
-        handleAddNewCourse({
-          image: this.courseImg.value,
-          title: this.courseTitle.value,
-          author: this.courseAuthor.value,
-          rating: +this.courseRating.value,
-          price: +this.coursePrice.value,
-          buyAmount: +this.courseBuyAmount.value,
-          bestSeller:
-            this.courseBestSeller.checked === true ? "BestSeller" : "",
-        });
+      ) 
+      {
+        // if (updateId) {
+        //   console.log(updateId);
+        //   handleUpdateCourse = async (data) => {
+        //     updateId
+        //       ? await updateCourse({ id: updateId, ...data })
+        //       : await addNewCourse(data);
+        //     this.resetInput();
+        //     await getCourseById();
+        //   };
+        // } else {
+          handleAddNewCourse({
+            image: this.courseImg.value,
+            title: this.courseTitle.value,
+            author: this.courseAuthor.value,
+            rating: +this.courseRating.value,
+            price: +this.coursePrice.value,
+            buyAmount: +this.courseBuyAmount.value,
+            bestSeller:
+              this.courseBestSeller.checked === true ? "BestSeller" : "",
+            // this.courseBestSeller.style.visibility = "hidden",
+          });
+        // }
+
         // this.modelContent.insertAdjacentHTML = "";
         this.courseList.innerHTML = "";
-        // this.closeCourseModal();
-        // console.log(updateId);
-        // updateId ? await updateCourse({ id: updateId, ...dataParam }) : await addNewCourse(dataParam);
-        // this.resetInput();
-        // await getElementById();
-        // updateId = null;
-
         this.resetInput();
-      } else {
+      } 
+      else {
         alert("Please enter all before create a new course!!");
       }
     });
   }
 
-  // edit
   /**
    * function use id
    * Add event 'click' for courseList element
@@ -256,6 +263,14 @@ export default class View {
         const id = e.target.parentNode.parentNode.id;
         const course = renderCourseModal(id);
         this.openCourseModal(course);
+        // updateId = id;
+        // handleUpdateCourse = async (data) => {
+        //   updateId
+        //     ? await updateCourse({ id: updateId, ...data })
+        //     : await addNewCourse(data);
+        //   this.resetInput();
+        //   await getCourseById();
+        // };
       }
     });
   };
@@ -289,7 +304,7 @@ export default class View {
    */
   bindSearchCourse(handleSearchCourse) {
     this.searchCourse.addEventListener("keyup", (e) => {
-      if (e.which === this.enter__key) {
+      if (e.which === this.ENTER_KEY) {
         handleSearchCourse(this.searchCourse.value.trim());
       }
     });
