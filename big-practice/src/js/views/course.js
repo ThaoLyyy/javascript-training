@@ -22,8 +22,8 @@ export default class View {
     this.courseRemove = document.getElementById("course__remove");
     this.cancelDel = document.getElementById("cancelDel__btn");
     this.btnDel = document.getElementById("delete__btn");
+    this.idInputHidden = document.getElementById("course__id");
     this.ENTER_KEY = 13;
-    let updateId = null;
   }
 
   // Reset the input after add course
@@ -49,13 +49,13 @@ export default class View {
       this.courseBuyAmount.value = course.buyAmount;
       this.courseBestSeller.checked = course.bestSeller;
       this.submitBtn.textContent = "update course";
+      this.idInputHidden.value = course.id;
     }
     this.courseModal.style.visibility = "visible";
   };
 
   closeCourseModal = () => {
     this.courseModal.style.visibility = "hidden";
-    // console.log("closeCourseModal");
     this.resetInput();
   };
 
@@ -176,13 +176,13 @@ export default class View {
   };
 
   /**
-   * Add event 'click' for element button
-   * @param {function} handleAddNewCourse
+   * Add event 'click' for addNewCourse button
+   * @param {function} handle
    */
-  bindAddNewCourse(handleAddNewCourse) {
+  bindCommonActionCourse(handle) {
     this.submitBtn.addEventListener("click", (e) => {
-      // e.preventDefault();
-      // validation
+      e.preventDefault();
+      // validation form
       if (this.courseImg.value == "") {
         alert("please enter your url image");
         return false;
@@ -207,8 +207,6 @@ export default class View {
         alert("please enter your buyAmount");
         return false;
       }
-
-      // validation form
       if (
         this.courseImg.value &&
         this.courseTitle.value &&
@@ -216,36 +214,21 @@ export default class View {
         this.courseRating.value &&
         this.coursePrice.value &&
         this.courseBuyAmount.value
-      ) 
-      {
-        // if (updateId) {
-        //   console.log(updateId);
-        //   handleUpdateCourse = async (data) => {
-        //     updateId
-        //       ? await updateCourse({ id: updateId, ...data })
-        //       : await addNewCourse(data);
-        //     this.resetInput();
-        //     await getCourseById();
-        //   };
-        // } else {
-          handleAddNewCourse({
-            image: this.courseImg.value,
-            title: this.courseTitle.value,
-            author: this.courseAuthor.value,
-            rating: +this.courseRating.value,
-            price: +this.coursePrice.value,
-            buyAmount: +this.courseBuyAmount.value,
-            bestSeller:
-              this.courseBestSeller.checked === true ? "BestSeller" : "",
-            // this.courseBestSeller.style.visibility = "hidden",
-          });
-        // }
-
-        // this.modelContent.insertAdjacentHTML = "";
-        this.courseList.innerHTML = "";
-        this.resetInput();
-      } 
-      else {
+      ) {
+        const id = this.idInputHidden.value;
+        const dataParam = {
+          image: this.courseImg.value,
+          title: this.courseTitle.value,
+          author: this.courseAuthor.value,
+          rating: +this.courseRating.value,
+          price: +this.coursePrice.value,
+          buyAmount: +this.courseBuyAmount.value,
+          bestSeller:
+            this.courseBestSeller.checked === true ? "BestSeller" : "",
+        };
+        handle(id, dataParam);
+        this.closeCourseModal();
+      } else {
         alert("Please enter all before create a new course!!");
       }
     });
@@ -263,14 +246,6 @@ export default class View {
         const id = e.target.parentNode.parentNode.id;
         const course = renderCourseModal(id);
         this.openCourseModal(course);
-        // updateId = id;
-        // handleUpdateCourse = async (data) => {
-        //   updateId
-        //     ? await updateCourse({ id: updateId, ...data })
-        //     : await addNewCourse(data);
-        //   this.resetInput();
-        //   await getCourseById();
-        // };
       }
     });
   };
@@ -296,7 +271,6 @@ export default class View {
       }
     });
   }
-
   /**
    * function use information to search course
    * Add event 'keyup' for search input
