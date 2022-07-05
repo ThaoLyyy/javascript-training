@@ -56,13 +56,13 @@ body {
   margin-left: 25px;
 }
 .course__button:hover {
-  background: rgb(88, 166, 240);
+  background: #bcf2f2;
   color: #000;
   font-weight: bold;
 }
 .course__popup {
   z-index: 3;
-  padding-top: 180px;
+  padding-top: 222px;
   position: fixed;
   left: 0;
   top: 0;
@@ -201,7 +201,7 @@ body {
   font-size: 16px;
   font-weight: 300;
 }
-.course__best-seller {
+.course__best--seller {
   color: #fff;
   background-color: #ffe162;
   border: 1px solid #fff;
@@ -232,7 +232,6 @@ body {
 .cancelDel__btn,
 .delete__btn {
   float: center;
-  /* width: 50%; */
   border: none;
   border-radius: 10px;
   padding: 10px 40px;
@@ -243,7 +242,8 @@ body {
   background-color: #ede3e3de;
   color: black;
 }
-.delete__btn:hover, .cancelDel__btn:hover{
+.delete__btn:hover,
+.cancelDel__btn:hover {
   color: #000;
   font-weight: bold;
 }
@@ -257,7 +257,7 @@ body {
   padding: 16px;
   text-align: center;
 }
-/* edit */
+/* The Modal edit */
 .course__edit {
   cursor: pointer;
   background-color: gray;
@@ -271,7 +271,7 @@ body {
 }
 .course__edit:hover,
 .course__edit:focus {
-  background: #fff;
+  background: #bcf2f2;
 }
 course__edit i {
   pointer-events: none;
@@ -287,7 +287,7 @@ course__edit i {
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: #0006;
-  padding-top: 180px;
+  padding-top: 222px;
   visibility: hidden;
 }
 /* Modal Content/Box */
@@ -321,5 +321,3 @@ course__edit i {
   clear: both;
   display: table;
 }
-
-
