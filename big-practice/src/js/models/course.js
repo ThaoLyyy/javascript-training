@@ -9,7 +9,7 @@ export default class Model {
 
   /**
    * Use API url from fetch import in read data
-   * @returns {array} course.
+   * @returns {array} courses
    */
   getCourses = async () => {
     this.courses = await fetch.get(`/${path.PATH_COURSE}`);
@@ -49,10 +49,10 @@ export default class Model {
   };
 
   /**
-   * Use API url from fetch import and param id from controller in update
+   * Use API url from fetch import and dataParam id from controller in update
    * @param {string} id
    */
-  updateCourse = async (data) => {
+  updateCourse = async (id, data) => {
     const dataParam = {
       image: data.image,
       title: data.title,
@@ -66,7 +66,6 @@ export default class Model {
     const index = this.courses.findIndex((item) => item.id === id);
     this.courses.splice(index, 1, course);
     return course;
-
   };
 
   deleteCourse = async (id) => {
@@ -78,12 +77,12 @@ export default class Model {
 
   /**
    * Search all course that match
-   * @returns {array} course
+   * @returns {array} courses
    */
-  searchCourse = async (querySearch) => {
+  searchCourse = (querySearch) => {
     if (querySearch) {
       return this.courses.filter((item) => item.title.includes(querySearch));
     }
-    return this.courses
-  };  
+    return this.courses;
+  };
 }
