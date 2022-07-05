@@ -7,11 +7,11 @@ export default class Controller {
 
     this.view.bindShowCourseModal();
     this.view.bindBtnClose();
-    this.view.bindAddNewCourse(this.handleAddNewCourse);
     this.view.bindCloseCourseModal();
     this.view.bindEditCourseModal(this.getCourseById);
     this.view.bindShowCourseModalDel();
     this.view.bindCloseCourseModalDel();
+    this.view.bindCommonActionCourse(this.handleCommonCourse);
     this.view.bindDeleteCourse(this.handleDeleteCourse);
     this.view.bindSearchCourse(this.handleSearchCourse);
   }
@@ -34,8 +34,25 @@ export default class Controller {
     this.onCourseListChanged(this.model.courses);
   };
 
+  handleCommonCourse = (id, course) => {
+    if (id) {
+      this.handleUpdateCourse(id, course);
+    } else {
+      this.handleAddNewCourse(course);
+    }
+  };
+
   handleEditCourseModal = async (data) => {
-    const course = await this.model.updateCourse(data);
+    const courses = await this.model.updateCourse(data);
+    this.onCourseListChanged(this.model.courses);
+  };
+
+  /**
+   * Use id, data from views call to models
+   * @param {string} id
+   */
+  handleUpdateCourse = async (id, data) => {
+    const course = await this.model.updateCourse(id, data);
     this.onCourseListChanged(this.model.courses);
   };
 
