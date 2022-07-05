@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Course</title>
+    <title>Course List</title>
     <link rel="stylesheet" href="./css/main.css" />
   </head>
   <body>
@@ -74,7 +74,7 @@
 
                 <input
                   type="number"
-                  id="course__buyAmount"
+                  id="course__buy--amount"
                   name="buyAmount"
                   alt="buyAmount"
                   placeholder="Buy amount"
@@ -84,13 +84,14 @@
                 <div>
                   <input
                   type="checkbox"
-                  id="course__bestseller"
+                  id="course__best--seller"
                   name="bestSeller"
                   alt="bestSeller"
                   placeholder="bestSeller"
                 />                 
                   <label for="best-seller" class="form__post--besl">best seller?</label>
                 </div>
+                  <input type="hidden" id="course__id">
                   <button type="submit" class="form__post--create" id="btn__submit" >create course</button>
                   <button type="button" class="form__post--cancel" id="btn__cancel" >cancel</button>
               </form>
