@@ -1,3 +1,4 @@
+import path from "../constant";
 export default class View {
   constructor() {
     this.courseImg = document.getElementById("course__img");
@@ -23,7 +24,6 @@ export default class View {
     this.cancelDel = document.getElementById("cancelDel__btn");
     this.btnDel = document.getElementById("delete__btn");
     this.idInputHidden = document.getElementById("course__id");
-    this.ENTER_KEY = 13;
   }
 
   // Reset the input after add course
@@ -58,7 +58,7 @@ export default class View {
     this.courseModal.style.visibility = "hidden";
     this.resetInput();
   };
-
+  
   openCourseModalDel = () => {
     this.courseModalDel.style.visibility = "visible";
   };
@@ -177,6 +177,8 @@ export default class View {
 
   /**
    * Add event 'click' for addNewCourse button
+   * Add event 'click' for CreateCourse button
+   * Add event 'click' for UpdateCourse button
    * @param {function} handle
    */
   bindCommonActionCourse(handle) {
@@ -228,6 +230,7 @@ export default class View {
         };
         handle(id, dataParam);
         this.closeCourseModal();
+        // this.courseList.innerHTML = "";
       } else {
         alert("Please enter all before create a new course!!");
       }
@@ -278,7 +281,7 @@ export default class View {
    */
   bindSearchCourse(handleSearchCourse) {
     this.searchCourse.addEventListener("keyup", (e) => {
-      if (e.which === this.ENTER_KEY) {
+      if (e.which === 13) {
         handleSearchCourse(this.searchCourse.value.trim());
       }
     });
