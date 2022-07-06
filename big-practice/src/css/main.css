@@ -143,9 +143,10 @@ body {
   cursor: pointer;
   color: #fff;
   background-color: #ff6651;
+  background-color: #ff4329;
   border: none;
   outline: none;
-  padding: 8px 10px;
+  padding: 9px 12px;
   border-radius: 50%;
   display: inline-block;
   position: absolute;

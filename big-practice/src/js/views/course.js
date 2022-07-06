@@ -220,9 +220,9 @@ export default class View {
           image: this.courseImg.value,
           title: this.courseTitle.value,
           author: this.courseAuthor.value,
-          rating: +this.courseRating.value,
-          price: +this.coursePrice.value,
-          buyAmount: +this.courseBuyAmount.value,
+          rating: this.courseRating.value,
+          price: this.coursePrice.value,
+          buyAmount: this.courseBuyAmount.value,
           bestSeller:
             this.courseBestSeller.checked === true ? "BestSeller" : "",
         };
