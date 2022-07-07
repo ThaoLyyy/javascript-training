@@ -228,7 +228,6 @@ export default class View {
         };
         handle(id, dataParam);
         this.closeCourseModal();
-        // this.courseList.innerHTML = "";
       } else {
         alert("Please enter all before create a new course!!");
       }
