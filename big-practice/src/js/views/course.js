@@ -62,7 +62,7 @@ export default class View {
   openCourseModalDel = () => {
     this.courseModalDel.style.visibility = "visible";
   };
-  // Close delete course modal
+  
   closeCourseModalDel() {
     this.courseModalDel.style.visibility = "hidden";
   }
@@ -177,8 +177,6 @@ export default class View {
 
   /**
    * Add event 'click' for addNewCourse button
-   * Add event 'click' for CreateCourse button
-   * Add event 'click' for UpdateCourse button
    * @param {function} handle
    */
   bindCommonActionCourse(handle) {
