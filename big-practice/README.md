@@ -25,7 +25,7 @@
 
 ## Timeline
 
-- Estimate time: 6 days
+- Estimate time: 7 days
 
 ## Desing
 
@@ -71,6 +71,9 @@ npm run dev
 ```
 http://localhost:1234
 ```
+
+## WEBSITE
+   [Link](https://thaoly-practice-courselist.herokuapp.com/)
 
 ## Author
 
