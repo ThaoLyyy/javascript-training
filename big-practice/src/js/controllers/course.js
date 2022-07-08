@@ -69,8 +69,8 @@ export default class Controller {
    * Use title from views call to models
    * @param {string} title
    */
-  handleSearchCourse = async (title) => {
-    const courses = await this.model.searchCourse(title);
+  handleSearchCourse = (title) => {
+    const courses = this.model.searchCourse(title);
     this.onCourseListChanged(courses);
   };
 }
