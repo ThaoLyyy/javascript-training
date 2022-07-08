@@ -31,7 +31,7 @@
 
 - [Figma](https://www.figma.com/file/vvPw8UG7QVPG46FgsCMc1s/Course-Management)
 
-## Geting started
+## Getting started
 
 - Clone repository
 
