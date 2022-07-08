@@ -88,7 +88,6 @@ function update(url, params) {
 /**
  * Use url and id to return result request to delete data
  * @param {string} url
- * @param {number} id
  * @returns result request to delete data
  */
 
