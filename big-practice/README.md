@@ -4,7 +4,7 @@
 
 - Create an application with Javascript
 
-## Techinical
+## Technical
 
 - HTML5
 - CSS3
