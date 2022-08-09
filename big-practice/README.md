@@ -27,7 +27,7 @@
 
 - Estimate time: 7 days
 
-## Desing
+## Design
 
 - [Figma](https://www.figma.com/file/vvPw8UG7QVPG46FgsCMc1s/Course-Management)
 
